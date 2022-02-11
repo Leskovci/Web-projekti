@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+     
+    <style>
+/* [1] The container */
+.img-hover-zoom {
+  height: 300px; /* [1.1] Set it as per your need */
+  overflow: hidden; /* [1.2] Hide the overflowing of child elements */
+}
+
+/* [2] Transition property for smooth transformation of images */
+.img-hover-zoom img {
+  transition: transform .5s ease;
+}
+
+/* [3] Finally, transforming the image when container gets hovered */
+.img-hover-zoom:hover img {
+  transform: scale(1.5);
+}
+        
+        .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+            
+        }
+            
+        .float-img {
+            float:left;
+            margin-right: 10px;
+            margin-bottom: 5px;
+            padding: 2px;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        .ok {
+            text-align: center;
+        }
+            
+</style>
+    
+<title>The History Of Web Browsers</title>
+</head>
+<body>
+
+    <div class="ok"><h1>The History Of Web Browsers</h1></div>
+    
+    <div class="img-hover-zoom"><img src="https://i.pcmag.com/imagery/roundups/03gXNuxiiy22Rd9583sPojG-1.fit_lim.size_1600x900.v1614012534.jpg" alt="browsers" width="1000" height="300" class="center"></div>
+    
+<p>We're all familiar with the browser's basic functionality: it's what connects you to everything on the internet. You can shop online, watch films, post photos, play games, and do a lot more with your browser. A browser, on the other hand, is a piece of software that retrieves and displays data from a server, such as web pages, text, photos, videos, and other media. But that's only the start.</p>
+    
+    <p>Why do various browsers react to websites differently, and why are there so many to begin with? Where did the necessity for cross-browser testing emerge from, and how do browsers work? It will be easier to comprehend what goes into building and testing a cross-compatible website if you understand the history and backend of certain popular browsers, such as Chrome, Safari, Internet Explorer (IE), Firefox, and Opera.</p>
+    
+    <div class="ok"><h2>Browser Timeline</h2></div>
+    
+    <p>1990 – The WorldWideWeb (not to be confused with the World Wide Web) was Tim Berners-original Lee's browser, which was later renamed Nexus to distinguish it from the actual World Wide Web. This was the sole browser and the only way to access the internet, unlike nowadays.</p>
+    
+    <p>1992 – Lynx was a text-only browser that couldn't show graphic material.</p>
+    
+    <p>1993 – Mosaic was "the world's first most popular browser" because it was the first to allow images to be integrated in text.</p>
+    
+    <p>1994 – A noticeable improvement to Mosaic came Netscape Navigator.</p>
+    
+    <p>1995 – Internet Explorer made its debut as Microsoft’s first web browser.</p>
+    
+    <p>1996 – Opera began as a research project in 1994, and it was until two years later that it was made public. As Internet Explorer advanced with new capabilities, this was probably the start of the browser wars, mostly between IE 3 and Navigator 3.</p>
+    
+    <p>2003 – Apple’s Safari browser was released specifically for Macintosh computers instead of Navigator.</p>
+    
+    <p>2004 – Mozilla launched Firefox as Netscape Navigator faded out.</p>
+    
+    <p>2007 – Apple's mobile web browser, Mobile Safari, was debuted and continues to dominate the iOS market.</p>
+    
+    <p>2008 – Google Chrome appeared to soon take over the browser market.</p>
+    
+    <p>2011 – Opera Mini was released to focus on the fast-growing mobile browser market.</p>
+    
+    <p>2015 – Microsoft Edge was born to combat Google.</p>
+    
+    <div class="ok"><h2>What's Behind A Browser?</h2></div>
+    
+    <p>The browser is made up of a few major components. The user interface, or UI, is essentially the browser wrapper. The address bar, back and forward buttons, minimize/maximize/exit buttons, tabs, and the reload page button are all located here. All browsers follow these guidelines. All of these items are commonly featured on every browser page to ensure usability, even though they aren't formally essential.</p>
+    
+    <p>The browser communicates with the web server as a client and requests information. The web server locates and provides the information you just requested to the web browser when you search something on Google and click on a link or type a URL in the address bar.</p>
+    
+    <p>It accomplishes this by first looking up the correct IP address using the Domain Name System (DNS). This essentially means that every URL has an analogous set of numbers – the IP address – that the DNS converts into language, allowing us to type "Google.com" instead than "74.125.134.102." Following that, it sends an HTTP request to the web server, which responds with HTML, CSS, and other content files for the browser to view.</p>
+    
+    <p>The browser then talks with the network to request all of the page's documents. With internal JavaScript interpreters, browsers may also show more advanced content such as interaction and animations created with JavaScript.</p>
+    
+    <p>The browser engine serves as a link between the user interface and the rendering engine. The rendering engine reads and interprets HTML and XML texts to create a Document Object Model (DOM) tree and show the information. Every browser's rendering engine is different, therefore a web page will likely look different depending on the browser.</p>
+    
+    <div class="ok"><h2>W3C Standards</h2></div>
+    
+    <p>So, why do browsers behave in such a distinct way? Why can you develop a web application that works OK in Firefox but hides or makes unusable some features when you open it in Safari?</p>
+    
+    <p>The World Wide Web Consortium is a web standards organization that has a set of criteria for browsers to follow when it comes to HTML and DOM.</p>
+    
+    <p>Because the rules aren't set in stone, different rendering engines may interpret them differently. This is one of the main reasons for differences in browser experiences. Browsers can follow the standard while also following their own set of rules, which can lead to incompatibilities.</p>
+    
+    <p>As browser versions evolve, many will include new areas or features that aren't covered by the W3C. It can produce cross-browser challenges for software teams, whether it's for a competitive advantage or just because of a grey area in the guidelines.</p>
+    
+    <p>The rendering engine, as we all know, is in charge of interpreting and showing content. Because browser rendering engines differ, content acts differently in different browsers. These changes can be minor, or they can be significant enough to render a web page unusable.</p>
+    
+    <p>Safari, for example, makes use of WebKit. Meanwhile, Blink is used by both Chrome and Opera. Gecko is used by Firefox, while Trident is used by Internet Explorer. This means that when it comes to generating and displaying a web page, each of these browsers has its own set of rules, which can be a tremendous pain for developers trying to produce a uniform experience.</p>
+    
+    <h2>Browser Wars</h2>
+    
+    <div class="float-img"><img src="https://i.ytimg.com/vi/W4wWdmfOibY/maxresdefault.jpg" alt="browser wars diagram" width="1000" height="550"></div>
+    
+    <p>As previously stated, browser wars have been raging since Internet Explorer and Netscape Navigator competed for the title of best in class browser in the 1990s. Netscape had previously dominated the market, but Microsoft overtook it with the release of Internet Explorer 3. Because it came pre-installed with Windows, it quickly became the de facto standard for many desktop users.</p>
+    
+    <p>When Safari was launched in 2003, the same thing happened. Previously, Macintosh users had to rely on Internet Explorer or Navigator, but with Safari preinstalled in Apple's operating system, the company has taken dominance of the desktop market.</p>
+    
+    <p>After a period of time in which IE outperformed Navigator, Netscape turned the browser's code open source and gave it to Mozilla. Firefox, on the other hand, experienced a quick growth in popularity for a few years after its release in 2004. That is, until Google Chrome was debuted in 2008 and swiftly overtook Internet Explorer as the most popular browser, which it is still today.</p>
+    
+    <p>In the interim, we've seen a surge in mobile use, as well as variations in mobile browsers and the advent of HTML5 and CSS3. All of this leads to the browser wars between Internet Explorer, Safari, Firefox, Chrome, Opera, and, most recently, Edge for the title of best web browser.</p>
+    
+    <p>That competition manifests itself in the form of frequent browser upgrades and version releases, which you may have seen recently as each browser competes for performance, security, features, and design. Many developers will try to program in a popular browser or one that uses a common rendering engine in order to make the website cross-compatible. For example, because Internet Explorer is known to be difficult, most people avoid developing in it.</p>
+    
+    <div class="ok"><h2>Modern Browsing</h2></div>
+    
+    <div class="img-hover-zoom"><img src="https://wwwcdn.secomapp.com/wp-content/uploads/2021/02/pexels-deepanker-verma-1482061-scaled.jpg" alt="web browsing in telephone" width="100" height="300" class="center"></div>
+    
+    <p>Chrome is remains the most popular desktop browser, while Safari is the most popular mobile browser. However, no clear winner has emerged. The browser wars are still raging, and fragmentation is a bigger problem than ever, thanks to the constant updates and releases of new browser versions and operating systems.</p>
+    
+    <p>Browser choices are heavily influenced by demographic factors such as age, country, and even work. Many schools and businesses, for example, have specific rules for what devices, operating systems, and browsers people may use, and do not allow individuals to update their equipment on their own.</p>
+    
+    <p>Furthermore, with browsers constantly updating versions in the hopes of becoming the next Google Chrome, it's impossible to predict when one will overtake the other in popularity or when another corporation will produce their own browser to enter the mix. Indeed, with the release of Firefox Quantum, an increasing number of users are considering making the transition to a speedier surfing experience.</p>
+    
+    <p>Furthermore, the underdog browsers continue to attract a separate user base. UC Browser, for example, may not have a substantial share of the internet in compared to the big five, but it nevertheless serves about 500 million users.</p>
+    
+    <p>So, what can we learn from the evolution of web browsers? As software experts, the only surefire method to address this wide range of user behavior is to create cross-browser compatible web apps and test them across multiple browsers to ensure that they are visually and functionally acceptable.</p>
+
+</body>
+</html>

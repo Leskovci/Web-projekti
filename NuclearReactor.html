@@ -1,0 +1,832 @@
+ <!DOCTYPE html>
+
+
+<html>
+<head>
+    
+    <title>Nuclear Reactor</title>
+    
+    <style>
+        
+        
+        
+        /*navigation*/
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    overflow-x: hidden;
+}
+
+.site-logo {
+    font-weight: 900;
+    font-size: 0.8rem;
+    color: var(--text);
+    text-decoration: none;
+}
+
+header {
+    --text: #f4f4f4;
+    --text-inverse: #333;
+    --background: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2em 3em;
+    transition: background 250ms ease-in;
+    background: var(--background);
+    color: var(--text);
+}
+
+.nav__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav__link {
+     --spacing: 1em;
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+    padding: calc(var(--spacing) / 2) var(--spacing);
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+}
+
+.nav__link:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: var(--spacing);
+    right: var(--spacing);
+    height: 2px;
+    background: currentColor;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    transition: -webkit-transform 150ms ease-in-out;
+    transition: transform 150ms ease-in-out;
+    transition: transform 150ms ease-in-out, -webkit-transform 150ms ease-in-out;
+}
+
+.nav__link:hover::after {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+}
+
+.nav__link--btn {
+    border: 1.5px solid currentColor;
+    border-radius: 2em;
+    margin-left: 1em;
+    transition: background 250ms ease-in-out;
+    letter-spacing: 1px;
+    padding: 0.75em 1.5em;
+}
+
+.nav__link--btn:hover {
+    background: var(--text);
+    color: var(--text-inverse);
+    border-color: var(--text);           
+}
+
+.nav__link--btn::after {
+    display:none;
+}
+
+      
+
+.nav__link--btn--highlight:hover {
+    background: var(--text);
+    border-color: var(--text);
+}
+
+.nav-scrolled {
+    --text: #333;         
+    --text-inverse: #f4f4f4;
+    --background: #f4f4f4;
+    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
+}
+            
+.burger {
+    display:none;
+    cursor:pointer;
+}
+        
+.burger div {
+    width:25px;
+    height:3px;
+    background-color: black;
+    margin:5px;     
+}
+            
+.nav__list a:hover {
+        transition: all .5s linear;
+}
+        
+        
+        
+    /*whem screen in minimized*/
+@media screen and (max-width:1200px) {
+    .nav__list {
+        width:60%;
+    }
+    
+}
+        
+        
+        
+@media screen and (max-width:1010px) {
+    
+        body {
+                 
+        }
+        
+        .nav__list {
+            position:absolute;
+            right:0px;
+            height:90vh;
+            top:8vh;
+            background-color: #061B37;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            text-align: center;    
+            width: 50%;
+            transform:translateX(100%);
+            transition: transform 0.5s ease-in;
+        }
+    
+        .nav__list a {
+            text-decoration: none;
+            letter-spacing: 3px;
+            border-spacing: 20px;
+            padding-top: 40px;
+            font-weight: bold;
+            font-size:14px;
+        }
+    
+        .nav__list li {
+            opacity:1;
+        }
+    
+        .burger {
+            display:block;
+            font-size: 14px;
+                 
+        }
+    
+}
+        
+        
+        
+        /*burger side bar*/
+.nav-active {
+    transform: translateX(0%);
+}
+        
+@keyframes navLinkFade {
+    
+    from {
+        opacity:0;
+        transform:translateX(50px);
+    }
+    
+    to {
+        opacity:1;
+        transform:translateX(0px);
+    }
+    
+}
+    
+        
+        
+        
+        
+    /*burger becomes x */
+.toggle .line1{
+    transform: rotate(-45deg) translate(-5px,6px);        
+}
+        
+.toggle .line2{
+    opacity:0;
+}
+        
+.toggle .line3{
+    transform: rotate(45deg) translate(-5px,-6px);
+}
+            /*navigation end*/
+       
+    
+        
+        
+        
+        
+/*big image*/
+header {
+  --text: #f4f4f4;
+  --text-inverse: #333;
+  --background: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2em 3em;
+  transition: background 250ms ease-in;
+  background: var(--background);
+  color: var(--text);
+}
+
+.home-intro {
+  padding: 30vh 0;
+  background: #123;
+  background-size: cover;
+  background-blend-mode: multiply;
+  color: white;
+  text-align: center;
+}
+
+.home-about {
+  padding: 4em 0;
+  max-width: 1520px;
+  margin: 0 auto;   
+}
+        
+        
+        
+  
+        
+        
+ /*title*/       
+.columns {
+    display: flex;
+    position: relative;
+    left:30%;
+    font-size:4em;    
+    font-family: "copperplate", serif;  
+}
+        
+.col + .col {
+  margin-left: 1.5em;  
+}
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 250ms ease-in;  
+}
+        
+.fade-in.appear {
+  opacity: 1;
+}
+        
+  
+        
+        
+        
+        
+        
+        
+/* main content*/
+.more-stuff-grid {
+    background: #f4f4f4;
+    border-bottom:  5px black;
+    border-bottom-style: groove;
+    padding: 4em 0;
+    display: grid;
+    grid-gap: 2em;
+    align-items: center;
+    background-color: ;
+    grid-template-columns: minmax(1em, 1fr) repeat(2, minmax(200px, 400px)) minmax(
+      1em,
+      1fr
+    );
+}
+        .more-stuff-grid p {
+            position: relative;
+            width:680px;
+            left:500px;
+        }
+        .more-stuff-grid img {
+            position:relative;
+            z-index:+1;
+            left:95%;
+            width:400px;
+            height:400px;
+        }
+    .more-stuff-grid img:hover {
+            position: relative;
+            z-index:+1;
+            transform:  rotateY(360deg);
+            transition: all 3s;
+        } 
+        
+.title {
+    position:relative;
+    font-size: 2em;
+    left:200px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid grey;
+}
+        
+#right {
+    position:relative;        
+    left:130%;     
+}
+        
+#text1 {
+    position:relative;
+    left:100%;
+}
+        
+#text2 {
+    position: relative;
+    align-items: center;
+    left:30%;
+}
+     
+        
+        
+        
+        
+        
+    /*menu button*/
+.dropbtn {
+    background-color: #3498DB;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    position:fixed;
+    z-index: +2;
+    top:100px;
+    left:10px;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #2980B9;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: fixed;
+    display: inline-block;
+    top:150px;
+    left:5px;
+    z-index: +2;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {
+    display:block;
+}
+        /*end of menu button*/
+  
+        
+        
+        
+   /*when screen minimizes*/
+  @media screen and (max-width:1200px) {
+            
+        
+             .more-stuff-grid {
+                position:relative;
+                display: flex;
+                flex-direction: column;
+                align-content: center;
+                text-align: center;
+                left:0px;
+                width: 100%;
+                 
+             } 
+                 .more-stuff-grid img {
+                     display:block;
+                     position:relative;
+                     left:0px;
+                 }
+      
+            .title {
+                left:0px;
+            }
+      
+            #text1 {                 
+                display: flex;
+                flex-direction: column;
+                align-content: center;
+                text-align: center;
+                left:0px;
+            }
+      
+            #text2 {
+                display: flex;
+                flex-direction: column;
+                align-content: center;
+                text-align: center;
+                left:0px; 
+            }
+      
+            #right {
+                display: flex;
+                flex-direction: column;
+                align-content: center;
+                text-align: center;
+                left:0px;
+            }
+              
+    }
+        
+        
+    </style>
+    
+    
+    </head>
+    
+    
+    <body>
+    
+        
+        
+        <header>
+            
+            
+      <a href="#" class="site-logo" aria-label="homepage">The Great Scientific Breakthroughts</a>
+            
+            
+         <!--navigation-->   
+      <nav class="main-nav">
+          
+          
+        <ul class="nav__list">
+            
+            
+          <li class="nav__list-item"> <a href="MainPage.html" class="nav__link">Home</a> </li>
+            
+            
+          <li class="nav__list-item"> <a href="#" class="nav__link">Engineering</a> </li>
+            
+            
+          <li class="nav__list-item"> <a href="#" class="nav__link">Medicine</a> </li>
+            
+            
+          <li class="nav__list-item"> <a href="Physics.html" class="nav__link">Physics</a> </li>
+            
+            
+          <li class="nav__list-item"> <a href="#" class="nav__link">Astronomy</a> </li>
+            
+            
+            <li class="nav__list-item"> <a href="#" class="nav__link">Technology</a> </li>
+            
+            
+            <li class="nav__list-item"> <a href="#" class="nav__link">References</a> </li>
+            
+            
+            <li class="nav__list-item"> <a href="#" class="nav__link">About Us</a> </li>
+            
+            
+        </ul>
+          
+          
+          <!-- the burger that appears when screen is minimzed-->
+           <div class="burger ">
+               
+        <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+               
+        </div>
+      </nav>
+            
+            
+          </header>
+
+        
+        
+        
+    <main>
+        
+      <section class="home-intro">
+          
+        <img src="photos/physics.png" alt="an image of an atom" width="400" height="400">
+          
+      </section>
+        
+        
+        
+        
+        
+        <!--menu button-->
+<div class="dropdown">
+    
+    
+  <button onclick="myFunction()" class="dropbtn">Menu</button>
+    
+    
+  <div id="myDropdown" class="dropdown-content">
+    <a href="#t1">Intro</a>
+      <a href="#t2">Chain reaction a criticality</a>
+      <a href="#t3">Reactor control</a>
+      <a href="#t4">Core</a>
+       
+  </div>
+</div>
+        
+        
+        
+      <div class="home-about">
+        
+       
+        <div class="columns">
+            
+          <div class="col fade-in">
+            <h3 id="t1">Nuclear Reactor</h3>
+            
+          </div>
+         
+          </div>
+        </div>
+        
+        
+        
+      
+
+      <div class="home-more-stuff">
+          
+          
+          <!--first section-->
+        <div class="more-stuff-grid">
+            
+          <img
+            src="photos/lukas-lehotsky-ixcHGhae2mg-unsplash.jpg" 
+            alt="nuclear reactor"
+            class="slide-in from-left"
+          />
+            
+          <p id="text1">
+              
+              <span class="title">Intro</span><br><br>
+              
+                Nuclear reactor the power supply for nuclear power plants, system to produce radioactive isotopes. A device capable of controlling and initiating nuclear fissions.
+              The process when a heavy atomic nucleus is separated into two smaller components. When this happens  the smaller components release neutrons which release more neutrons, which cause more fissions. So, a chain reaction has been created and this releases a large amount of energy.The design to increase the intensity until much of the material has fissioned is the design for an atomic bomb. 
+
+                <br><br>
+             
+          </p>
+        </div>
+          
+          
+          
+          
+          
+          <!--second section-->
+        <div class="more-stuff-grid">
+             
+          <p id="text2">
+              
+               <span id="t2"></span>
+              
+              This sort of expansion is rapid and creates the characteristics of such bombs. whereas the nuclear reactor is controlled and cannot be used as an atomic bomb.
+              Within short time after the fission most of the energy is released, the remaining energy is produced by the fragment of the fission. An energy that must be dealt with the proper reactor design is the radioactive decay which is the process when the atom reaches a more stable state.
+         
+
+                <br><br>
+             
+          </p>
+            
+        <img id="right"
+            src="photos/hexagon-gd8167ec54_1280.png" 
+            alt="an atom inside of hexagon"
+            class="slide-in from-right" 
+          />
+        </div>
+          
+          
+          
+          
+          <!--third section-->
+        <div class="more-stuff-grid">
+            
+          <img
+            src="photos/radioactivity-g972274aeb_1280.png" 
+            alt="radiation sign"
+            class="slide-in from-left"
+          />
+            
+          <p id="text1">
+              
+               <span class="title">Chain reaction a criticality</span>
+              
+                <br><br>
+              
+              When the number of neutrons decreases we say that the reactor is in a critical state, whereas when the number of neutrons rises we say that the reactor is in super critical state. When the number of neutrons drops to zero we say that the reactor is in a subcritical state. The deduction of the chain reaction is done by the probability that the neutron will do a fission before the real fission.
+              When a reactor is started up the operators remove control rods until it approaches nominal power level, then they put the rods back in partially balancing the population. In the end when they want to shut down the reactor put the rods in completely.<span id="t3"></span>
+                <br><br><br>
+              
+          </p>
+        </div>
+          
+          
+          
+          
+          <!--fourth section-->
+        <div class="more-stuff-grid">
+            
+          <p id="text2">
+              
+               <span class="title">Reactor control</span>
+              
+                <br><br>
+              
+              In order to control the reactor a parameter is used. That parameter is called reactivity and it measures the state of the reactor in relation to the critical state. At subcritical reactivity is negative, at criticality is zero, and at supercritical is positive. There are some ways to control reactivity on is by adding or removing the amount of the absorber, another one is by changing the amount of fuel, and last by changing the ratio of neutrons. The changing of the ratio of neutrons can be done automatically by increasing the power which releases more neutrons and lowers the reactivity, in the other hand the absorbers amount can only be changed by the operators. The derivation of the neutrons and some other processes are crucial to designing a reactor.<span id="t4"></span>
+                <br><br><br>
+              
+          </p>
+            
+          <img id="right"
+            src="photos/pexels-d%C5%BEenis-hasanica-5046034.jpg"
+            alt="a man in a suit against radiation"
+            class="slide-in from-right"
+          />
+        </div>
+          
+          
+          
+          
+          <!--fifth section-->
+        <div class="more-stuff-grid">
+            
+          <img 
+            src="photos/nuclear-power-plant-g48b7cd3a2_1920.jpg"
+            alt="a nuclear power plant"
+            class="slide-in from-left"
+          />
+            
+          <p id="text1">
+              
+               <span class="title">Core</span>
+              
+                <br><br>
+              Core is the central part of the rector that contains fuel, and where the fission is done. When the fuel contains elements that have fissile material and a diluent we say that it is a heterogeneous fuel. A diluent is an agent with good chemical and mechanical properties and does not absorb neutrons.  Diluents act as an environment where the fissile material can stably reside. To prevent or at least minimize the probability of releasing fission elements the material is enclosed in a cladding substance.
+                <br><br>
+             
+          </p>
+        </div>
+        
+          
+        </div>
+    </main>
+        
+        
+       
+    <script>
+        
+         
+               /*navigation*/
+        const navSlide = () => {
+            const burger = document.querySelector('.burger');
+            const nav = document.querySelector('.nav__list');
+            const navLinks= document.querySelectorAll('.nav__list li');
+            
+            burger.addEventListener('click',() =>{
+                nav.classList.toggle('nav-active');
+            
+        
+           
+            burger.classList.toggle('toggle');
+        });
+        }
+        navSlide();
+        /*navigation*/
+        
+        
+        
+        
+        
+        
+        
+        //menu button//
+         function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+        
+        
+        
+        
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+   
+
+
+
+
+
+
+      //fade in and slide in feature//
+        const header = document.querySelector("header");
+const sectionOne = document.querySelector(".home-intro");
+
+const faders = document.querySelectorAll(".fade-in");
+const sliders = document.querySelectorAll(".slide-in");
+
+const sectionOneOptions = {
+  rootMargin: "-200px 0px 0px 0px"
+};
+        
+ 
+        
+        
+        
+        
+        
+//appear on scroll//
+const sectionOneObserver = new IntersectionObserver(function(
+  entries,
+  sectionOneObserver
+) {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) {
+      header.classList.add("nav-scrolled");
+    } else {
+      header.classList.remove("nav-scrolled");
+    }
+  });
+},
+sectionOneOptions);
+
+sectionOneObserver.observe(sectionOne);
+
+const appearOptions = {
+  threshold: 0,
+  rootMargin: "0px 0px -250px 0px"
+};
+
+const appearOnScroll = new IntersectionObserver(function(
+  entries,
+  appearOnScroll
+) {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) {
+      return;
+    } else {
+      entry.target.classList.add("appear");
+      appearOnScroll.unobserve(entry.target);
+    }
+  });
+},
+appearOptions);
+
+faders.forEach(fader => {
+  appearOnScroll.observe(fader);
+});
+
+sliders.forEach(slider => {
+  appearOnScroll.observe(slider);
+});</script>
+  </body>
+</html>

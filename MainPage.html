@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        
+        <title>Home page</title>
+        
+         <style>
+             
+             
+   /*navigation*/          
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    overflow-x: hidden;
+}
+
+.site-logo {
+    font-weight: 900;
+    font-size: 0.8rem;
+    color: var(--text);
+    text-decoration: none;
+}
+
+header {
+    --text: #f4f4f4;
+    --text-inverse: #333;
+    --background: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2em 3em;
+    transition: background 250ms ease-in;
+    background: var(--background);
+    color: var(--text);
+}
+
+.nav__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav__link {
+    --spacing: 1em;
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+    padding: calc(var(--spacing) / 2) var(--spacing);
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+}
+
+.nav__link:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: var(--spacing);
+    right: var(--spacing);
+    height: 2px;
+    background: currentColor;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    transition: -webkit-transform 150ms ease-in-out;
+    transition: transform 150ms ease-in-out;
+    transition: transform 150ms ease-in-out, -webkit-transform 150ms ease-in-out;
+}
+
+.nav__link:hover::after {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+}
+
+.nav__link--btn {
+    border: 1.5px solid currentColor;
+    border-radius: 2em;
+    margin-left: 1em;
+    transition: background 250ms ease-in-out;
+    letter-spacing: 1px;
+    padding: 0.75em 1.5em;
+}
+
+.nav__link--btn:hover {
+    background: var(--text);
+    color: var(--text-inverse);
+    border-color: var(--text);    
+}
+
+.nav__link--btn::after {
+    display:none;
+}
+       
+.nav__link--btn--highlight:hover {
+    background: var(--text);
+    border-color: var(--text);
+}
+
+.nav-scrolled {
+    --text: #333;           
+    --text-inverse: #f4f4f4;
+    --background: #f4f4f4;
+    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
+}
+            
+.burger {
+    display:none;
+    cursor:pointer;
+}
+             
+.burger div {
+    width:25px;
+    height:3px;
+    background-color: black;
+    margin:5px;            
+}
+     
+.nav__list a:hover {
+        transition: all .5s linear;
+    }
+      
+             
+             
+             
+             
+             
+             /*when screen is minimized*/
+@media screen and (max-width:1200px) {
+    
+    .nav__list {
+        width:60%;
+    }
+    
+}
+             
+             
+             
+@media screen and (max-width:1010px) {
+    
+        body {
+                 
+        }
+        
+        .nav__list {
+            position:absolute;
+            right:0px;
+            height:90vh;
+            top:8vh;
+            background-color: #061B37;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            text-align: center;               
+            width: 50%;
+            transform:translateX(100%);
+            transition: transform 0.5s ease-in;
+        }
+    
+        .nav__list a {
+            text-decoration: none;
+            letter-spacing: 3px;
+            border-spacing: 20px;
+            padding-top: 40px;
+            font-weight: bold;
+            font-size:14px;
+        }
+    
+        .nav__list li {
+            opacity:1;
+        }
+    
+        .burger {
+            display:block;
+            font-size: 14px;                
+        }
+    
+    }
+             
+             
+             
+             
+         /*burger side bar*/    
+.nav-active {
+    transform: translateX(0%);
+}
+             
+@keyframes navLinkFade {
+    
+    from {
+        opacity:0;
+        transform:translateX(50px);
+    }
+    to {
+        opacity:1;
+        transform:translateX(0px);
+    }
+}
+             
+             
+             
+             
+    /*burger becomes x */
+.toggle .line1 {
+    transform: rotate(-45deg) translate(-5px,6px);           
+}
+             
+.toggle .line2 {
+    opacity:0;
+}
+             
+.toggle .line3 {
+    transform: rotate(45deg) translate(-5px,-6px);
+}
+             
+             
+    /*big image*/
+.home-intro {
+    padding: 50vh 0;
+    background:#137 url(pics/downkoad-3.jpg);
+    background-size: cover;
+    background-blend-mode: multiply;
+    color: white;
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+}
+
+.home-about {
+    padding: 2em 0;
+    max-width: 900px;
+    margin: 0 auto;
+    font-family: "Montserrat", sans-serif;
+}
+             
+             
+    /*moving text*/
+.wavy {
+    position:relative;
+    -webkit-box-reflect:below -12px linear-gradient(transparent, rgba(0,0,0,0.2));            
+}
+             
+.wavy span {
+    position:relative;
+    display:inline-block;
+    color:white;
+    font-size: 5em;
+    text-transform: uppercase;
+    animation: animate 1s ease-in-out infinite;
+    animation-delay:calc(0.1s *var(--i));          
+}
+             
+.wavy text {
+    color: #137;
+}
+             
+.firstimage {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 500px;
+    background-color: black;
+}
+             
+@keyframes animate {
+    0% {
+        transform:translateY(0px);
+    }
+    
+    20% {
+        transform:translateY(-20px);
+    }
+    40%,100% {
+        transform:translateY(0px);
+    }
+}
+
+     
+             
+             
+             
+       /*title*/      
+.columns {
+    display: flex;
+}
+
+.col + .col {
+    margin-left: 1.5em;
+}
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 250ms ease-in;
+}
+
+.fade-in.appear {
+    opacity: 1;
+}
+             
+             
+             
+        /*main content*/
+.more-stuff-grid {
+    background: #eee;
+    padding: 22em 0;
+    display: grid;
+    grid-gap: 2em;
+    align-items: center ;
+    grid-template-columns: minmax(81em, 1fr) repeat(2, minmax(200px, 400px)) minmax(
+        1em,
+        1fr
+    );
+}
+ 
+             
+             
+             
+             
+    /*first*/         
+  /*the sqaure that appears after hover */           
+.card {
+    position:absolute;
+    width:450px;
+    height:300px;
+    right:1080px;
+    top:1100px;              
+    border-radius: 20px;
+    display:flex;
+    align-items:center;
+    border-radius:20px;
+    transition:0.5s;
+}
+             
+.card .circle {
+    position:absolute;
+    top:20px;
+    left:200px;
+    width:100%;
+    height:100%;
+    border-radius: 20px;
+    overflow: hidden;
+}
+             
+.card .circle:before {
+    content: '';
+    position:absolute;
+    top:0px;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#205283;
+    clip-path: circle(100px at center);
+    transition:0.5s;
+}
+             
+.card:hover .circle:before {
+    background:#022A33;
+    clip-path: circle(300px at center);
+}
+             
+.card img {
+    position:absolute;
+    top:56%;
+    left:94.5%;
+    transform: translate(-50%,-50%);
+    height:120px;
+    pointer-events: none;
+    transition:0.5s;
+}
+             
+.card:hover img {
+    left:119%;
+    height:170px;
+}
+             
+.card .content {
+    position:relative;
+    width:58%;
+    left:68%;
+    padding: 20px 20px 20px 40px;
+    transition:0.5s;
+    opacity:0;
+    visibility: hidden;
+}
+             
+.card:hover .content {
+    left:43%;
+    opacity:1;
+    visibility:visible;
+}
+             
+.card .content h2 {
+    color:#fff;
+    text-transform: uppercase;
+    font-size:2em;
+    line-height:1em;
+    margin-bottom: 10px;              
+}
+             
+.card .content p {
+    color:#fff;
+}
+             
+.card .content a {
+    position:relative;
+    color:#fff;
+    padding:10px 20px;
+    border-radius:10px;
+    background:#fff;
+    color:#111;
+    margin-top:10px;
+    display:inline-block;
+    text-decoration: none;
+    font-weight:700;
+}
+             
+.content a:hover {
+    background-color: #FCE5CD;
+}
+ 
+             
+             
+             
+             
+             
+    /*second*/         
+.card2 {
+    position:absolute;
+    width:450px;
+    height:300px;
+    right:680px;
+    top:1100px;               
+    border-radius: 20px;
+    display:flex;
+    align-items:center;
+    border-radius:20px;
+    transition:0.5s;
+}
+             
+.card2 .circle2 {
+    position:absolute;
+    top:20px;
+    left:200px;
+    width:100%;
+    height:100%;
+    border-radius: 20px;
+    overflow: hidden;
+}
+             
+.card2 .circle2:before {
+    content: '';
+    position:absolute;
+    top:0px;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#016379;
+    clip-path: circle(100px at center);
+    transition:0.5s;
+}
+             
+.card2:hover .circle2:before {
+    background:#022A33;
+    clip-path: circle(300px at center);
+}
+             
+.card2 img {
+    position:absolute;
+    top:56%;
+    left:94%;
+    transform: translate(-50%,-50%);
+    height:140px;
+    pointer-events: none;
+    transition:0.5s;
+}
+             
+.card2:hover img {
+    left:122%;
+    height:190px;
+}
+             
+.card2 .content2 {
+    position:relative;
+    width:58%;
+    left:68%;
+    padding: 20px 20px 20px 40px;
+    transition:0.5s;
+    opacity:0;
+    visibility: hidden;
+}
+             
+.card2:hover .content2 {
+    left:42%;
+    opacity:1;
+    visibility:visible;
+}
+             
+.card2 .content2 h2 {
+    color:#fff;
+    text-transform: uppercase;
+    font-size:2em;
+    line-height:1em;
+    margin-bottom: 10px;
+}
+             
+.card2 .content2 p {
+        color:#fff;
+}
+             
+.card2 .content2 a {
+    position:relative;
+    color:#fff;
+    padding:10px 20px;
+    border-radius:10px;
+    background:#fff;
+    color:#111;
+    margin-top:10px;
+    display:inline-block;
+    text-decoration: none;
+    font-weight:700;
+}
+             
+.content2 a:hover {
+    background-color: #FCE5CD;
+}
+  
+             
+             
+             
+             
+             
+     /*third*/        
+.card3 {
+    position:absolute;
+    width:450px;
+    height:300px;
+    right:280px;
+    top:1100px;
+    border-radius: 20px;
+    display:flex;
+    align-items:center;
+    border-radius:20px;
+    transition:0.5s;
+}
+             
+.card3 .circle3 {
+    position:absolute;
+    top:20px;
+    left:200px;
+    width:100%;
+    height:100%;
+    border-radius: 20px;
+    overflow: hidden;
+}
+             
+.card3 .circle3:before {
+    content: '';
+    position:absolute;
+    top:0px;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#143452;
+    clip-path: circle(100px at center);
+    transition:0.5s;
+}
+             
+.card3:hover .circle3:before {
+    background:#022A33;
+    clip-path: circle(300px at center);
+}
+             
+.card3 img {
+    position:absolute;
+    top:56%;
+    left:94%;
+    transform: translate(-50%,-50%);
+    height:100px;
+    pointer-events: none;
+    transition:0.5s;
+}
+.card3:hover img {
+    left:119%;
+    height:170px;
+}
+             
+.card3 .content3 {
+    position:relative;
+    width:58%;
+    left:68%;
+    padding: 20px 20px 20px 40px;
+    transition:0.5s;
+    opacity:0;
+    visibility: hidden;
+}
+             
+.card3:hover .content3 {
+    left:41%;
+    opacity:1;
+    visibility:visible;
+ }
+             
+.card3 .content3 h2 {
+    color:#fff;
+    text-transform: uppercase;
+    font-size:2em;
+    line-height:1em;
+    margin-bottom: 10px;           
+}
+             
+.card3 .content3 p {
+    color:#fff;
+}
+             
+.card3 .content3 a {
+    position:relative;
+    color:#fff;
+    padding:10px 20px;
+    border-radius:10px;
+    background:#fff;
+    color:#111;
+    margin-top:10px;
+    display:inline-block;
+    text-decoration: none;
+    font-weight:700;
+}
+             
+.content3 a:hover {
+    background-color: #FCE5CD;
+}
+ 
+             
+             
+             
+             
+             
+             
+    /*fourth*/         
+.card4 {
+    position:absolute;
+    width:450px;
+    height:300px;
+    right:880px;
+    top:1400px;              
+    border-radius: 20px;
+    display:flex;
+    align-items:center;
+    border-radius:20px;
+    transition:0.5s;
+}
+             
+.card4 .circle4 {
+    position:absolute;
+    top:20px;
+    left:200px;
+    width:100%;
+    height:100%;
+    border-radius: 20px;
+    overflow: hidden;
+}
+             
+.card4 .circle4:before {
+    content: '';
+    position:absolute;
+    top:0px;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#3A577E;
+    clip-path: circle(100px at center);
+    transition:0.5s;
+}
+             
+.card4:hover .circle4:before {
+    background:#022A33;
+    clip-path: circle(300px at center);
+}
+             
+.card4 img {
+    position:absolute;
+    top:56%;
+    left:94%;
+    transform: translate(-50%,-50%);
+    height:100px;
+    pointer-events: none;
+    transition:0.5s;
+}
+             
+.card4:hover img {
+    left:120%;
+    height:165px;
+}
+             
+.card4 .content4 {
+    position:relative;
+    width:58%;
+    left:68%;
+    padding: 20px 20px 20px 40px;
+    transition:0.5s;
+    opacity:0;
+    visibility: hidden;
+}
+             
+.card4:hover .content4 {
+    left:42%;
+    opacity:1;
+    visibility:visible;
+}
+             
+.card4 .content4 h2 {
+    color:#fff;
+    text-transform: uppercase;
+    font-size:2em;
+    line-height:1em;
+    margin-bottom: 10px;          
+}
+             
+.card4 .content4 p {
+    color:#fff;
+}
+             
+.card4 .content4 a {
+    position:relative;
+    color:#fff;
+    padding:10px 20px;
+    border-radius:10px;
+    background:#fff;
+    color:#111;
+    margin-top:10px;
+    display:inline-block;
+    text-decoration: none;
+    font-weight:700;
+}
+             
+.content4 a:hover {
+    background-color: #FCE5CD;
+}
+ 
+             
+             
+             
+             
+             
+             
+    /*fifth*/         
+.card5 {
+    position:absolute;
+    width:450px;
+    height:300px;
+    right:480px;
+    top:1400px;                            
+    border-radius: 20px;
+    display:flex;
+    align-items:center;
+    border-radius:20px;
+    transition:0.5s;
+}
+             
+.card5 .circle5 {
+    position:absolute;
+    top:20px;
+    left:200px;
+    width:100%;
+    height:100%;
+    border-radius: 20px;
+    overflow: hidden;
+}
+             
+.card5 .circle5:before {
+    content: '';
+    position:absolute;
+    top:0px;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#134F5C;
+    clip-path: circle(100px at center);
+    transition:0.5s;
+}
+             
+.card5:hover .circle5:before {
+    background:#022A33;
+    clip-path: circle(300px at center);
+}
+             
+.card5 img {
+    position:absolute;
+    top:56%;
+    left:94.5%;
+    transform: translate(-50%,-50%);
+    height:100px;
+    pointer-events: none;
+    transition:0.5s;
+}
+             
+.card5:hover img {
+    left:123%;
+    height:160px;
+}
+             
+.card5 .content5 {
+    position:relative;
+    width:58%;
+    left:68%;
+    padding: 20px 20px 20px 40px;
+    transition:0.5s;
+    opacity:0;
+    visibility: hidden;
+}
+             
+.card5:hover .content5 {
+    left:41.5%;
+    opacity:1;
+    visibility:visible;
+}
+             
+.card5 .content5 h2 {
+    color:#fff;
+    text-transform: uppercase;
+    font-size:2em;
+    line-height:1em;
+    margin-bottom: 10px;
+}
+             
+.card5 .content5 p {
+    color:#fff;
+}
+             
+.card5 .content5 a {
+    position:relative;
+    color:#fff;
+    padding:10px 20px;
+    border-radius:10px;
+    background:#fff;
+    color:#111;
+    margin-top:10px;
+    display:inline-block;
+    text-decoration: none;
+    font-weight:700;
+}
+             
+.content5 a:hover {
+    background-color: #FCE5CD;
+}
+             
+             
+ 
+             
+             
+             
+    /*the about us section*/            
+.aboutus{
+    position: relative;
+    top:10px;             
+}      
+.more-stuff-grid2 {
+    background: white;
+    padding: 5em 0;
+    display: grid;
+    grid-gap: 1px;
+    margin-left:80px;
+    grid-template-columns: minmax(110px, 1fr) repeat(2, minmax(400px, 300px)) minmax(
+        0.5em,
+        1fr
+    );
+} 
+             
+       
+.lol {
+    font-size: 50px;
+    margin-right:120px;
+    text-align: right;
+}
+#contactUs {
+    position:relative;
+    top:20px;
+    left:30px;
+    text-align: center;                
+    padding:0.5rem 1rem;
+    font-size: 1.1rem;
+    background-color:#2ecc71;
+    cursor:pointer;
+    outline:none;
+    border:none;
+    color:#fff;
+    transition: .3s;
+    width:100px;
+    height:20px;
+    border-radius: 10px;                
+}
+             
+#contactUs a {
+    text-decoration: none;
+    color: white;
+}
+#contactUs:hover {
+    background-color: #27ae60;
+}
+             
+             
+             
+        </style>
+        
+        
+    </head>
+    
+    
+    
+    <body>
+        
+        
+    <header>
+        
+        
+      <a href="#" class="site-logo" aria-label="homepage">The Great Scientific Breakthroughts</a>
+        
+        
+      <nav class="main-nav">
+          
+          
+        <ul class="nav__list">
+            
+            
+            
+            <li class="nav__list-item"> <a href="#" class="nav__link">Home</a> </li>
+            
+            
+            <li class="nav__list-item"> <a href="" class="nav__link">Engineering</a> </li>
+            
+            
+            <li class="nav__list-item"> <a href="#" class="nav__link">Medicine</a> </li>
+            
+            
+            <li class="nav__list-item"> <a href="Physics.html" class="nav__link">Physics</a> </li>
+            
+            
+            <li class="nav__list-item"> <a href="#" class="nav__link">Astronomy</a> </li>
+            
+            
+            <li class="nav__list-item"> <a href="#" class="nav__link">Technology</a> </li>
+            
+            
+            <li class="nav__list-item"> <a href="#" class="nav__link">References</a> </li>
+            
+            
+            <li class="nav__list-item"> <a href="#" class="nav__link">About Us</a> </li>
+            
+            
+        </ul>
+          
+          
+          
+          
+          
+          
+           <div class="burger ">
+               
+        <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+               
+        </div>
+      </nav>
+        
+    </header>
+        
+     <main>
+         
+          <section class="home-intro">
+              
+      <div class="wavy">
+          
+        <span style="--i:1;">T</span>
+                   
+        <span style="--i:2;">H</span>
+           
+        <span style="--i:3;">E</span>
+           
+        <span><text>P</text></span>
+          
+        <span style="--i:4;">B</span>
+          
+        <span style="--i:5;">I</span>
+          
+        <span style="--i:6;">G</span>
+          
+        <span><text>P</text></span>
+          
+        <span style="--i:7;">B</span>
+          
+        <span style="--i:8;">A</span>
+          
+        <span style="--i:9;">N</span>
+          
+        <span style="--i:10;">G</span>
+        
+        
+        
+        
+        </div>
+          </section>
+
+          <div class="home-about">
+              
+              
+            <h2>HOME</h2>
+              
+            <p>
+                Learning about science and its history is very important. Some inventions and breakthrougths have altered what we call science today in many fields. In this website you can navigate through the five main branches of science and discover the moments that have defined them. Just hover over the icons and choose the topic of your liking!
+                
+            </p>
+
+            </div>
+         
+         
+         
+
+          <div class="home-more-stuff">
+              
+              
+            <div class="more-stuff-grid">
+                
+                
+                 <div class="card">
+                     
+                <div class="circle"></div>
+                     
+                <img src="photos/physics.png" alt="an image of an atom">
+                     
+                <div class="content">
+
+                <h2>PHYSICS</h2><br>
+                        
+        <p>
+            From gravity to something,<br> learn more about the topic!
+        </p>
+                        
+            <a href="#">Visit the page</a>
+                        
+        </div>
+        </div>
+                
+              
+                
+                
+                
+                <div class="card2">
+                     
+                <div class="circle2"></div>
+                     
+                <img src="photos/eng.png" alt="an image of a gear">
+                     
+                <div class="content2">
+
+        <h2>ENGINEERING</h2><br>
+            
+        <p> 
+            From the wheel to the engine,<br> learn more about the topic!
+        </p>
+            
+            <a href="#">Visit Now</a>
+            
+        </div>
+        </div>
+                        
+                
+                
+                
+                
+                
+                
+                <div class="card3">
+                    
+                <div class="circle3"></div>
+                    
+                <img src="photos/med.png" alt="an image of the medic plus sign">
+                    
+                <div class="content3">
+
+        <h2>MEDICINE</h2><br>
+            
+        <p>
+            From insulin to the pap smear, <br>learn more about the topic!
+        </p>
+            
+            <a href="#">Visit Now</a>
+            
+        </div>
+        </div>
+                
+                
+                
+                
+                
+                
+                
+                <div class="card4">
+                    
+                <div class="circle4"></div>
+                    
+                <img src="photos/as.png" alt="an image of space and planets">
+                    
+                <div class="content4">
+
+            <h2>ASTRONOMY</h2><br>
+            
+            <p>
+                From something to something,<br> learn more about the topic!
+            </p>
+            
+                <a href="#">Visit Now</a>
+            
+                </div>
+                </div>
+                  
+                
+                
+                
+                
+                
+                    <div class="card5">
+                    
+                    <div class="circle5"></div>
+                    
+                    <img src="photos/tech.png" alt="an image of a circuit">
+                    
+                    <div class="content5">
+
+        <h2>TECHNOLOGY</h2><br>
+            
+        <p>
+            From the lightbulb to the telephone, <br> learn more about the topic!
+        </p>
+            
+            <a href="#">Visit Now</a>
+            
+        </div>
+        </div>
+
+              </div>
+            </div>
+         
+         
+         
+         
+         
+         <div class="lower-section">
+         <div class="aboutus">
+             
+                    <h1 class="lol">About Our Team<hr></h1> 
+             
+                </div>
+         
+         
+         
+         
+            <div class="more-stuff-grid2">
+                 
+          <img
+               src="photos/us.png"
+               alt="a group of people"
+               style="height:180px"
+               />
+                
+          <p>
+              
+            A team of students that wanted to help people access information easier. Learn more about the people behind this page by clicking bellow
+              
+          </p>
+                
+                <span id="contactUs"><a href="ContactUs.html">Contact us</a></span>
+                
+            </div>
+        </div>
+        </main>
+        
+        
+        
+        
+        <script>
+            
+            
+            
+                   /*navigation*/
+        const navSlide = () => {
+            const burger = document.querySelector('.burger');
+            const nav = document.querySelector('.nav__list');
+            const navLinks= document.querySelectorAll('.nav__list li');
+            
+            burger.addEventListener('click',() =>{
+                nav.classList.toggle('nav-active');
+            
+        
+           
+            burger.classList.toggle('toggle');
+        });
+        }
+        navSlide();
+        /*navigation*/
+            
+    
+            
+            
+            
+            
+            /*fade in and slide in feature*/
+            const header = document.querySelector("header");
+        const sectionOne = document.querySelector(".home-intro");
+
+        const faders = document.querySelectorAll(".fade-in");
+        const sliders = document.querySelectorAll(".slide-in");
+
+        const sectionOneOptions = {
+          rootMargin: "-200px 0px 0px 0px"
+        };
+
+            
+            
+            
+            /*appear on scroll*/
+        const sectionOneObserver = new IntersectionObserver(function(
+          entries,
+          sectionOneObserver
+        ) {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+              header.classList.add("nav-scrolled");
+            } 
+              else {
+              header.classList.remove("nav-scrolled");
+            }
+          });
+        },
+        sectionOneOptions);
+
+        sectionOneObserver.observe(sectionOne);
+
+        const appearOptions = {
+          threshold: 0,
+          rootMargin: "0px 0px -250px 0px"
+        };
+
+            
+            
+           
+            
+        const appearOnScroll = new IntersectionObserver(function(
+          entries,
+          appearOnScroll
+        ) {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+              return;
+            } 
+              else {
+              entry.target.classList.add("appear");
+              appearOnScroll.unobserve(entry.target);
+            }
+          });
+        },
+        appearOptions);
+
+        faders.forEach(fader => {
+          appearOnScroll.observe(fader);
+        });
+
+        sliders.forEach(slider => {
+          appearOnScroll.observe(slider);
+        });
+        
+        </script>
+        
+    </body>
+</html>

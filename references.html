@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <style>
+         body {
+          margin: 0;
+          font-family: "Poppins", sans-serif;
+          overflow-x: hidden;
+        }
+
+        .site-logo {
+          font-weight: 900;
+          font-size: 0.8rem;
+          color: var(--text);
+          text-decoration: none;
+        }
+
+        header {
+          --text: #f4f4f4;
+          --text-inverse: #333;
+          --background: transparent;
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          z-index: 999;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 2em 3em;
+          transition: background 250ms ease-in;
+          background: var(--background);
+          color: var(--text);
+        }
+
+        .nav__list {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          display: flex;
+        }
+
+        .nav__link {
+          --spacing: 1em;
+          text-decoration: none;
+          color: inherit;
+          display: inline-block;
+          padding: calc(var(--spacing) / 2) var(--spacing);
+          position: relative;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          font-size: 0.9rem;
+        }
+
+        .nav__link:after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: var(--spacing);
+          right: var(--spacing);
+          height: 2px;
+          background: currentColor;
+          -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+          transition: -webkit-transform 150ms ease-in-out;
+          transition: transform 150ms ease-in-out;
+          transition: transform 150ms ease-in-out, -webkit-transform 150ms ease-in-out;
+        }
+
+        .nav__link:hover::after {
+          -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+        }
+
+        .nav__link--btn {
+          border: 1.5px solid currentColor;
+          border-radius: 2em;
+          margin-left: 1em;
+          transition: background 250ms ease-in-out;
+          letter-spacing: 1px;
+          padding: 0.75em 1.5em;
+        }
+
+        .nav__link--btn:hover {
+          background: var(--text);
+          color: var(--text-inverse);
+          border-color: var(--text);
+        }
+
+        .nav__link--btn::after {
+          display: none;
+        }
+
+        .nav__link--btn--highlight {
+          background: limegreen;
+          border-color: limegreen;
+          color: #333;
+        }
+
+        .nav__link--btn--highlight:hover {
+          background: var(--text);
+          border-color: var(--text);
+        }
+
+        .nav-scrolled {
+          --text: #333;
+          --text-inverse: #f4f4f4;
+          --background: #f4f4f4;
+          box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
+        }
+         .burger{
+            display:none;
+            cursor:pointer;
+        }
+        .burger div{
+            width:25px;
+            height:3px;
+            background-color: whitesmoke;
+            margin:5px;
+        }
+        .nav__list a:hover{
+                transition: all .5s linear;
+            }
+        @media screen and (max-width:1200px){
+            .nav__list{
+                width:60%;
+            }
+        }
+         @media screen and (max-width:1010px){
+             body{
+                 
+             }
+        
+             .nav__list{
+                 position:absolute;
+                 right:0px;
+                 height:90vh;
+                 top:8vh;
+                 background-color: #061B37;
+                 color: white;
+                 display: flex;
+                 flex-direction: column;
+                 align-content: center;
+                 
+                 width: 50%;
+                 transform:translateX(100%);
+                 transition: transform 0.5s ease-in;
+             }
+             .nav__list li{
+                 opacity:1;
+             }
+             .burger{
+                 display:block;
+                 font-size: 14px;
+                 
+             }
+        }
+        .nav-active{
+            transform: translateX(0%);
+        }
+        @keyframes navLinkFade{
+            from{
+                opacity:0;
+                transform:translateX(50px);
+            }
+            to{
+                opacity:1;
+                transform:translateX(0px);
+            }
+        }
+        .toggle .line1{
+            transform: rotate(-45deg) translate(-5px,6px);
+            
+        }
+        .toggle .line2{
+            opacity:0;
+        }
+        .toggle .line3{
+            transform: rotate(45deg) translate(-5px,-6px);
+        }
+             .home-intro {
+                  padding: 50vh 0;
+                  background:#137 url(photos/downkoad-3.jpg);
+                  background-size: cover;
+                  background-blend-mode: multiply;
+                  color: white;
+                  text-align: center;
+                font-family: "Poppins", sans-serif;
+                }
+
+                
+                }
+
+
+                .columns {
+                  display: flex;
+                }
+
+                .col + .col {
+                  margin-left: 1.5em;
+                }
+
+                .fade-in {
+                  opacity: 0;
+                  transition: opacity 250ms ease-in;
+                }
+
+                .fade-in.appear {
+                  opacity: 1;
+                }
+                        
+                }
+             .References{
+                 padding:15px;
+             }
+            
+       
+              .lol {
+                  font-size: 50px;
+                  margin-right:120px;
+                  text-align: right;
+
+                }
+             .more-stuff-grid {
+                  background: #eee;
+                  display: grid;
+                  padding:30px;
+                  grid-gap: 2px;
+                  grid-template-columns: auto;
+                }
+             .more-stuff-grid2 {
+                  display: grid;
+                  padding:30px;
+                  grid-gap: 2px;
+                  grid-template-columns: auto;
+                }
+        </style>
+        
+    </head>
+    <body>
+    <header>
+      <a href="#" class="site-logo" aria-label="homepage">The Great Scientific Breakthroughts</a>
+      <nav class="main-nav">
+        <ul class="nav__list">
+          <li class="nav__list-item"><a href="#" class="nav__link">Home</a></li>
+          <li class="nav__list-item">
+            <a href="#" class="nav__link">Engineering</a>
+          </li>
+          <li class="nav__list-item">
+            <a href="#" class="nav__link">Medicine</a>
+          </li>
+          <li class="nav__list-item">
+            <a href="#" class="nav__link">Physics</a>
+          </li>
+          <li class="nav__list-item"><a href="#" class="nav__link">Astronomy</a></li>
+            <li class="nav__list-item">
+            <a href="#" class="nav__link">Technology</a>
+          </li>
+            <li class="nav__list-item">
+            <a href="#" class="nav__link">References</a>
+          </li>
+            <li class="nav__list-item">
+            <a href="#" class="nav__link">About Us</a>
+          </li>
+        </ul>
+           <div class="burger ">
+        <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+      </nav>
+    </header>
+     <main>
+          <section class="home-intro">
+            <h1>Discover the greatest scientific breakthroughts of time!</h1>
+          </section>
+         <div class="more-stuff-grid2">
+          <div class="References">
+              <h2>Reference List</h2>
+         </div>
+         
+         <h3>Astronomy</h3>
+         <h4>References</h4>
+         <ul>
+             <li>Gieryn T.F. The aging of a science and its exploitation of innovation:Lessons from X-Ray and radio astronomy.Scientometrics 3,325-334.Available from: https://doi.org/10.1007/BF020211</li>
+             <li> Space Link:Providing updates in Space Science and astronomy,Flavio J. Mendez and Jim P. O’Leary Available:https://adsabs.harvard.edu/pdf/2004ASPC..319..194MNASA%20Office%20of%20Space%20Science%20Education%20and%20Public%20Outreach%20Conference%202002</li>
+             <li>Simonton, D. K. (2012). Foresight, insight, oversight, and hindsight in scientific discovery: How sighted were Galileo's telescopic sightings? Psychology of Aesthetics, Creativity, and the Arts, 6(3), 243–254.Available:https://doi.org/10.1037/a0027058</li>
+             <li>Smithsonian Magazine, “A Salute to the wheel,” Smithsonian.com, 17-Jun-2009. [Online]. Available:https://www.smithsonianmag.com/science-nature/a-salute-to-the-wheel-31805121/.[Accessed: 20-Nov-2021].</li>
+         </ul>
+         <h4>Pictures</h4>
+         <ul>
+             <li>https://www.pexels.com/photo/black-telescope-under-blue-and-blacksky-2034892/</li>
+             <li>https://www.pexels.com/photo/gray-and-black-galaxy-wallpaper-2150/</li>
+             <li>https://www.pexels.com/photo/timelapse-photography-of-moon-1275413/</li>
+             <li>https://www.pexels.com/photo/astronauts-helping-each-other-to-climb-a-mountain-8474991/</li>
+             <li>https://www.pexels.com/photo/grayscale-photo-of-an-sculpture-5551476/</li>
+         </ul>
+         </div>
+         <div class="more-stuff-grid">
+         <h3>Engineering</h3>
+         <h4>References</h4>
+         <ul>
+             <li>The Editors of Encyclopaedia Britannica, “Steam Engine,” Encyclopaedia Britannica, 2019. [Online]. Available: https://www.britannica.com/technology/steam-engine. [Accessed: 27-Nov-2021]. </li>
+             <li>E. Palermo, “Who invented the printing press?,” LiveScience, 25-Feb-2014. [Online]. Available: https://www.livescience.com/43639-who-invented-the-printing-press.html. [Accessed: 22-Nov-2021]. </li>
+             <li>S. Karlsson & A. Lugn, “The invention of the telephone” history.com, 30-Nov-2019.[Online].Available:https://www.ericsson.com/en/about-us/history/changing-the-world/phones-for-everyone/the-invention-of-the-telephone .[Accessed:27-Nov-2021].</li>
+             <li>R. Matulka & D. Wood, “The History Of The Light Bulb” energy.gov, 22-Nov-2013.[Online].Available:https://www.energy.gov/articles/history-light-bulb. [Accessed:27-Nov-2021</li>
+             <li>R. Trenholm, “History of digital cameras: From '70s prototypes to iPhone and Galaxy's everyday wonders” cnet.com, 31-May-2021. [Online]. Available:https://www.cnet.com/tech/computing/history-of-digital-cameras-from-70s-prototypes-to-iphone-and-galaxys-everyday-wonders/. [Accessed:27-Nov-2021]</li>
+         </ul>
+         <h4>Pictures</h4>
+         <ul>
+             <li></li>
+         </ul>
+         </div>
+         <div class="more-stuff-grid2">
+         <h3>Medicine</h3>
+         <h4>References</h4>
+         <ul>
+             <li>"History of Smallpox | Smallpox | CDC", Cdc.gov. [Online]. Available: https://www.cdc.gov/smallpox/history/history.html. [Accessed: 27- Nov- 2021].</li>
+             <li>Smallpox vaccines", Who.int, 2016. [Online]. Available: https://www.who.int/news-room/feature-stories/detail/smallpox-vaccines. [Accessed: 27- Nov- 2021].</li>
+             <li>Riedel, S., 2005. Edward Jenner and the history of smallpox and vaccination. [ebook] Dallas: Proceedings (Baylor University. Medical Center), pp.21-25. Available at: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1200696/ [Accessed 27 November 2021].</li>
+             <li>R. Hollingham, "The chilling experiment which created the first vaccine", Bbc.com, 2020. [Online]. Available: https://www.bbc.com/future/article/20200928-how-the-first-vaccine-was-born. [Accessed: 27- Nov- 2021].</li>
+             <li>"History of Anaesthesia", WFSA, 2021. [Online]. Available: https://wfsahq.org/about/history/history-of-anaesthesia/. [Accessed: 27- Nov- 2021].</li>
+             <li>Lakhtakia, R., 2013. The History of Diabetes Mellitus. [ebook] Muscat: Sultan Qaboos University medical journal, pp.368-370. Available at: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3749019/ [Accessed 27 November 2021].</li>
+             <li>Cohn, L., Tchantchaleishvili, V. and Rajab, T., 2015. Evolution of the concept and practice of mitral valve repair. [ebook] Annals of cardiothoracic surgery, pp.315-321. Available at: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4526492/ [Accessed 27 November 2021].</li>
+             <li>Nibib.nih.gov. n.d. Magnetic Resonance Imaging (MRI). [online] Available at: https://www.nibib.nih.gov/science-education/science-topics/magnetic-resonance-imaging-mri [Accessed 27 November 2021].</li>
+             <li>Edelman, R., 2014. The History of MR Imaging as Seen through the Pages of Radiology. [ebook] Evanston, pp.181-200. Available at: https://pubs.rsna.org/doi/pdf/10.1148/radiol.14140706 [Accessed 27 November 2021].</li>
+         </ul>
+         <h4>Pictures</h4>
+         <ul>
+             <li>https://www.pexels.com/photo/white-and-blue-stethoscope-on-white-surface-8670435/</li>
+             <li>https://upload.wikimedia.org/wikipedia/commons/9/95/Ether_inhaler%2C_c._1846%2C_developed_by_William_T._G._Morton_-_National_Museum_of_American_History_-_DSC06167.JPG</li>
+             <li>https://en.wikipedia.org/wiki/Frederick_Banting#/media/File:Fredrick_banting.jpg</li>
+             <li>https://en.wikipedia.org/wiki/John_Macleod_(physiologist)#/media/File:J.J.R._Macleod_ca._1928.png</li>
+             <li>https://en.wikipedia.org/wiki/History_of_general_anesthesia#/media/File:Southworth_&_Hawes_-_First_etherized_operation_(re-enactment).jpg</li>
+             <li>https://en.wikipedia.org/wiki/Edward_Jenner#/media/File:Jenner_phipps_01_(cropped).jpg</li>
+             <li>https://en.wikipedia.org/wiki/Smallpox_vaccine#/media/File:Smallpox_vaccine.jpg</li>
+             <li>https://med.umn.edu/lhi/about/c-walton-lillehei</li>
+             <li>https://hms.harvard.edu/magazine/cost-conflict/backward-glance</li>
+             <li>https://www.sciencedirect.com/science/article/abs/pii/S0003497521007232</li>
+             <li>https://www.bizjournals.com/portland/blog/health-care-inc/2016/07/the-inventorshow-dr-starrs-cherry-blossom-moment.html</li>
+             <li>https://www.nobelprize.org/prizes/physics/1944/rabi/biographical/</li>
+             <li>https://www.pexels.com/photo/technology-hospital-medicine-indoors-7089017/</li>
+             <li>https://www.pexels.com/photo/medical-imaging-of-the-brain-5723875/</li>
+             <li>https://www.nobelprize.org/prizes/physics/1952/summary/</li>
+             <li>https://www.nobelprize.org/prizes/medicine/2003/lauterbur/facts/</li>
+             <li>https://www.nobelprize.org/prizes/medicine/2003/mansfield/biographical/</li>
+             <li>https://en.wikipedia.org/wiki/Pap_test#/media/File:Normal_PAP_(Cervical)_Smear.jpg</li>
+             <li>https://en.wikipedia.org/wiki/Pap_test#/media/File:Low-grade_sil_and_endocx.jpg</li>
+             <li>https://en.wikipedia.org/wiki/Pap_test#/media/File:Adenocarcinoma_on_pap_test_1.jpg</li>
+             <li>https://upload.wikimedia.org/wikipedia/commons/8/85/ThinPrep_Pap_smear_HPV.jpeg</li>
+             <li>https://www.mypathologyreport.ca/asc-us/</li>
+             <li>https://www.mypathologyreport.ca/ags-pap/</li>
+             <li>https://www.greece-is.com/the-amazing-story-of-the-man-who-developed-the-pap-test/</li>
+             <li>https://www.wapm.com.au/anaesthesia/blog/?p=30</li>
+             <li>https://www.pexels.com/photo/photo-of-ct-scan-medical-equipment-7089013/</li>
+             <li>https://www.pexels.com/photo/a-vaccine-in-a-vial-5878521/</li>
+             <li>https://www.pexels.com/photo/food-healthy-woman-hand-6941884/</li>
+             <li>https://www.pexels.com/photo/two-person-doing-surgery-inside-room-1250655/</li>
+             <li>https://www.pexels.com/photo/a-light-microscope-placed-on-a-white-surface-5726808/</li>
+         </ul>
+         </div>
+         <div class="more-stuff-grid">
+         <h3>Physics</h3>
+         <h4>References</h4>
+         <ul>
+             <li>R. Bilstein, T. Crouch and W. Boyne, "history of flight | Airplanes, Dates, & Facts", Encyclopedia Britannica, 2022. [Online]. Available: https://www.britannica.com/technology/history-of-flight. [Accessed: 31- Nov- 2021].</li>
+             <li>S.Gordon (2020,sep.10). electric generator. Encyclopedia Britannica. [Online]. Available at: https://www.britannica.com/technology/electric-generator. [Accessed: Nov-27-2021].</li>
+             <li>S, Bernard I. and M, Wade(2019,sep.5). nuclear reactor. Encyclopedia Britannica, [Online].Available at: https://www.britannica.com/technology/nuclear-reactor. [Accessed  Nov-27- 2021].</li>
+             <li>J.Blom(2013,june.13).What is electricity. Sparkfun. [Online].Available at: https://www.sparkfun.com/users/69916?_ga=2.105292739.1384328317.1638042623-1053751973.1637863436. [Accessed:Nov-27-2021].</li>
+         </ul>
+         <h4>Pictures</h4>
+         <ul>
+             <li>https://pixabay.com/illustrations/generator-voltage-machine-turbine-4853502/</li>
+             <li>https://pixabay.com/illustrations/light-bulb-idea-lit-inspiration-4514505/</li>
+             <li>https://pixabay.com/illustrations/wormhole-space-time-light-tunnel-739872/</li>
+             <li>https://pixabay.com/photos/wormhole-black-hole-galaxy-space-5319178/</li>
+             <li>https://unsplash.com/photos/ixcHGhae2mg</li>
+             <li>https://www.pexels.com/photo/blue-metal-tool-2635595/</li>
+             <li>https://www.pexels.com/photo/man-people-woman-internet-4225877/</li>
+             <li>https://unsplash.com/photos/Yj1M5riCKk4</li>
+             <li>https://www.pexels.com/photo/black-metal-current-posts-157827/</li>
+             <li>https://www.pexels.com/photo/blue-electric-sparks-68173/</li>
+             <li>https://www.pexels.com/photo/woman-using-smartphone-and-laptop-4549414/</li>
+             <li>https://www.pexels.com/photo/black-and-white-bones-hand-x-ray-207496/</li>
+             <li>https://www.pexels.com/photo/a-person-holding-an-x-ray-of-the-head-5723881/</li>
+             <li>https://www.pexels.com/photo/woman-technology-clinic-health-4270367/</li>
+             <li>https://www.pexels.com/photo/technology-architecture-emergency-clinic-6501859/</li>
+             <li>https://www.pexels.com/photo/fashion-man-people-woman-6501918/</li>
+             <li>https://pixabay.com/photos/generator-alternator-equipment-5476642/</li>
+             <li>https://pixabay.com/vectors/generator-electricity-high-voltage-1032627/</li>
+             <li>https://pixabay.com/photos/machine-generator-energy-4755856/</li>
+             <li>https://pixabay.com/photos/solar-cells-electricity-photovoltaic-491703/</li>
+             <li>https://pixabay.com/photos/pinwheels-wind-energy-wind-power-474576/</li>
+             <li>https://pixabay.com/photos/cable-electric-wire-bare-copper-wire-875927/</li>
+             <li>https://pixabay.com/vectors/electromagnetic-waves-wave-length-1526374/</li>
+             <li>https://pixabay.com/vectors/magnetic-field-lines-magnetism-154887/</li>
+             <li>https://pixabay.com/vectors/magnetism-electromagnetic-field-148998/</li>
+             <li>https://pixabay.com/vectors/magnetism-electromagnetic-field-148997/</li>
+             <li>https://pixabay.com/photos/newton-s-cradle-balls-ball-share-256213/</li>
+             <li>https://pixabay.com/illustrations/planets-solar-system-sun-moon-5503203/</li>
+             <li>https://pixabay.com/vectors/radioactivity-signs-nuclear-warning-30274/</li>
+             <li>https://pixabay.com/vectors/hexagon-symbol-gui-internet-2307348/</li>
+             <li>https://pixabay.com/vectors/letter-e-mail-contact-icon-send-2935365/</li>
+             <li>https://pixabay.com/photos/nuclear-power-plant-cooling-tower-4529392/</li>
+             <li>https://www.pexels.com/photo/man-people-dirty-portrait-5046034/</li>
+             <li>https://unsplash.com/photos/8-ddOX6LSrM</li>
+             <li>https://www.pexels.com/photo/magnetic-ball-in-womans-hands-10186702/</li>
+             <li>https://www.pexels.com/photo/woman-illustrating-albert-einstein-formula-714698/</li>
+         </ul>
+         </div>
+         <div class="more-stuff-grid2">
+         <h3>Technology</h3>
+         <h4>References</h4>
+         <ul>
+             <li>McPeak, A., 2018. A Brief History of Web Browsers and How They Work. [online] SmartBear.com. Available at: https://smartbear.com/blog/history-of-web-browsers/ [Accessed 15 January 2022].</li>
+             <li>Williamson, T., 2021. History of Computers: A Brief Timeline. [online] livescience.com. Available at: https://www.livescience.com/20718-computer-history.html [Accessed 15 January 2022].</li>
+             <li>Aerospace Corporation. 2021. Brief History of GPS | The Aerospace Corporation. [online] Available at: https://aerospace.org/article/brief-history-gps [Accessed 15 January 2022].</li>
+             <li>Morris, J., 2022. History of the Telephone - ITPA. [online] Nationalitpa.com. Available at: https://www.nationalitpa.com/history-of-telephone [Accessed 15 January 2022].</li>
+             <li>Karlsson, S. and Lugn, A., 2022. The invention of the telephone. [online] ericsson.com. Available at: https://www.ericsson.com/en/about-us/history/changing-the-world/phones-for-everyone/the-invention-of-the-telephone [Accessed 15 January 2022].</li>
+             <li>Matulka, R. and Wood, D., 2013. The History of the Light Bulb. [online] Energy.gov. Available at: https://www.energy.gov/articles/history-light-bulb#LEDs [Accessed 15 January 2022]</li>
+             <li>Stephens, M., 2022. History of Television - Mitchell Stephens. [online] Stephens.hosting.nyu.edu. Available at: https://stephens.hosting.nyu.edu/History%20of%20Television%20page.html [Accessed 15 January 2022].</li>
+         </ul>
+         <h4>Pictures</h4>
+         <ul>
+             <li>https://www.youtube.com/watch?v=W4wWdmfOibY</li>
+             <li>https://www.pcmag.com/picks/chrome-edge-firefox-opera-or-safari-which-browser-is-best</li>
+             <li>https://www.secomapp.com/pexels-deepanker-verma-1482061/</li>
+             <li>https://informationq.com/computer-history-with-timeline1900-1946/</li>
+             <li>https://www.livescience.com/20718-computer-history.html</li>
+             <li>https://newsline.news/the-last-nail-can-get-into-the-coffin-of-windows-7/</li>
+             <li>https://www.bbc.com/news/technology-59222749</li>
+             <li>https://www.thoughtco.com/history-of-the-ibm-pc-1991408</li>
+             <li>https://aerospace.org/article/brief-history-gps</li>
+             <li>https://www.nytimes.com/wirecutter/reviews/best-car-gps/</li>
+             <li>https://www.geotab.com/blog/what-is-gps/</li>
+             <li>https://insidegnss.com/farewell-to-a-great-generation-gps-iia/</li>
+             <li>https://www.abby.com/blog/the-history-of-the-telephone/</li><li>https://en.wikipedia.org/wiki/History_of_the_telephone</li>
+             <li>https://en.wikipedia.org/wiki/Strowger_switch</li>
+             <li>https://www.troyhistoricvillage.org/september-25-first-transatlantic-telephone-cable-opened-lines-between-u-s-canada-britain-and-europe-on-9-25-1956/</li>
+             <li>https://www.edn.com/1st-transatlantic-telephone-service-is-established-january-7-1927/</li>
+             <li>https://www.techradar.com/news/upcoming-phones-2022</li>
+             <li>https://lumenauthority.com/light-bulb-evolution/</li>
+             <li>https://www.independent.co.uk/news/science/oldfashioned-light-bulbs-could-be-set-for-comeback-after-light-recycling-breakthrough-a6806446.html</li>
+             <li>https://www.sciencefocus.com/science/who-really-invented-the-light-bulb/</li>
+             <li>https://www.thespruce.com/t-type-fluorescent-light-bulbs-1152396</li>
+             <li>https://www.latimes.com/opinion/story/2020-09-10/donald-trump-joseph-mccarthy-military-opposition</li>
+             <li>https://medium.com/@deerrun/the-golden-age-of-television-why-now-9585bd99f483</li>
+             <li>https://people.howstuffworks.com/culture-traditions/tv-and-culture/advent-of-television-impact-politics.htm</li>
+             <li>https://picclick.com/2006-Samsung-flat-screen-Stereo-CRT-TV-TX-R2435-124139206423.html</li>
+             <li>https://www.smithsonianmag.com/smart-news/farmboy-who-invented-television-while-plowing-180964607/</li>
+             <li>https://www.behance.net/gallery/78098763/Evolution-of-Television-Timeline</li>
+             
+         </ul>
+         </div>
+         <div class="aboutus">
+                    <hr>                
+                </div>
+            <div class="more-stuff-grid2">
+            </div>
+        </main>
+        <script>
+                   /*navigation*/
+        const navSlide = () => {
+            const burger = document.querySelector('.burger');
+            const nav = document.querySelector('.nav__link');
+            const navLinks= document.querySelectorAll('.nav__link li');
+            
+            burger.addEventListener('click',() =>{
+                nav.classList.toggle('nav-active');
+            
+        
+           
+            burger.classList.toggle('toggle');
+        });
+        }
+        navSlide();
+        /*navigation*/
+            const header = document.querySelector("header");
+        const sectionOne = document.querySelector(".home-intro");
+
+        const faders = document.querySelectorAll(".fade-in");
+        const sliders = document.querySelectorAll(".slide-in");
+
+        const sectionOneOptions = {
+          rootMargin: "-200px 0px 0px 0px"
+        };
+
+        const sectionOneObserver = new IntersectionObserver(function(
+          entries,
+          sectionOneObserver
+        ) {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+              header.classList.add("nav-scrolled");
+            } else {
+              header.classList.remove("nav-scrolled");
+            }
+          });
+        },
+        sectionOneOptions);
+
+        sectionOneObserver.observe(sectionOne);
+
+        const appearOptions = {
+          threshold: 0,
+          rootMargin: "0px 0px -250px 0px"
+        };
+
+        const appearOnScroll = new IntersectionObserver(function(
+          entries,
+          appearOnScroll
+        ) {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+              return;
+            } else {
+              entry.target.classList.add("appear");
+              appearOnScroll.unobserve(entry.target);
+            }
+          });
+        },
+        appearOptions);
+
+        faders.forEach(fader => {
+          appearOnScroll.observe(fader);
+        });
+
+        sliders.forEach(slider => {
+          appearOnScroll.observe(slider);
+        });</script>
+    </body>
+</html>

@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <style>
+         body {
+          margin: 0;
+          font-family: "Poppins", sans-serif;
+          overflow-x: hidden;
+        }
+
+        .site-logo {
+          font-weight: 900;
+          font-size: 0.8rem;
+          color: var(--text);
+          text-decoration: none;
+        }
+
+        header {
+          --text: #f4f4f4;
+          --text-inverse: #333;
+          --background: transparent;
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          z-index: 999;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 2em 3em;
+          transition: background 250ms ease-in;
+          background: var(--background);
+          color: var(--text);
+        }
+
+        .nav__list {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          display: flex;
+        }
+
+        .nav__link {
+          --spacing: 1em;
+          text-decoration: none;
+          color: inherit;
+          display: inline-block;
+          padding: calc(var(--spacing) / 2) var(--spacing);
+          position: relative;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          font-size: 0.9rem;
+        }
+
+        .nav__link:after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: var(--spacing);
+          right: var(--spacing);
+          height: 2px;
+          background: currentColor;
+          -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+          transition: -webkit-transform 150ms ease-in-out;
+          transition: transform 150ms ease-in-out;
+          transition: transform 150ms ease-in-out, -webkit-transform 150ms ease-in-out;
+        }
+
+        .nav__link:hover::after {
+          -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+        }
+
+        .nav__link--btn {
+          border: 1.5px solid currentColor;
+          border-radius: 2em;
+          margin-left: 1em;
+          transition: background 250ms ease-in-out;
+          letter-spacing: 1px;
+          padding: 0.75em 1.5em;
+        }
+
+        .nav__link--btn:hover {
+          background: var(--text);
+          color: var(--text-inverse);
+          border-color: var(--text);
+        }
+
+        .nav__link--btn::after {
+          display: none;
+        }
+
+        .nav__link--btn--highlight {
+          background: limegreen;
+          border-color: limegreen;
+          color: #333;
+        }
+
+        .nav__link--btn--highlight:hover {
+          background: var(--text);
+          border-color: var(--text);
+        }
+
+        .nav-scrolled {
+          --text: #333;
+          --text-inverse: #f4f4f4;
+          --background: #f4f4f4;
+          box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
+        }
+         .burger{
+            display:none;
+            cursor:pointer;
+        }
+        .burger div{
+            width:25px;
+            height:3px;
+            background-color: whitesmoke;
+            margin:5px;
+        }
+        .nav__list a:hover{
+                transition: all .5s linear;
+            }
+        @media screen and (max-width:1200px){
+            .nav__list{
+                width:60%;
+            }
+        }
+         @media screen and (max-width:1010px){
+             body{
+                 
+             }
+        
+             .nav__list{
+                 position:absolute;
+                 right:0px;
+                 height:90vh;
+                 top:8vh;
+                 background-color: #061B37;
+                 color: white;
+                 display: flex;
+                 flex-direction: column;
+                 align-content: center;
+                 
+                 width: 50%;
+                 transform:translateX(100%);
+                 transition: transform 0.5s ease-in;
+             }
+             .nav__list li{
+                 opacity:1;
+             }
+             .burger{
+                 display:block;
+                 font-size: 14px;
+                 
+             }
+        }
+        .nav-active{
+            transform: translateX(0%);
+        }
+        @keyframes navLinkFade{
+            from{
+                opacity:0;
+                transform:translateX(50px);
+            }
+            to{
+                opacity:1;
+                transform:translateX(0px);
+            }
+        }
+        .toggle .line1{
+            transform: rotate(-45deg) translate(-5px,6px);
+            
+        }
+        .toggle .line2{
+            opacity:0;
+        }
+        .toggle .line3{
+            transform: rotate(45deg) translate(-5px,-6px);
+        }
+             .home-intro {
+                  padding: 50vh 0;
+                  background:#8ecae6 url(photos/medicine.jpg);
+                  background-size: cover;
+                  background-blend-mode: multiply;
+                  color: white;
+                  text-align: center;
+                font-family: "Poppins", sans-serif;
+                }
+
+                .home-about {
+                  padding: 1em 0;
+                  max-width: 900px;
+                  margin: 0 auto;
+                text-align: center;
+                  font-family: "Montserrat", sans-serif;
+                font-size: 30px;
+
+                }
+
+
+
+                .fade-in {
+                  opacity: 0;
+                  transition: opacity 250ms ease-in;
+                }
+
+                .fade-in.appear {
+                  opacity: 1;
+                }
+                        .more-stuff-grid {
+                  background: #eee;
+                  padding: 4em 0;
+                  display: grid;
+                  font-size: 16px;
+                  grid-gap: 2em;
+                  align-items: center ;
+                  grid-template-columns: minmax(1em, 1fr) repeat(2, minmax(200px, 400px)) minmax(
+                      1em,
+                      1fr
+                    );
+                }
+             .more-stuff-grid2 {
+                  background: white;
+                  padding: 4em 0;
+                  display: grid;
+                  font-size: 16px;
+                  grid-gap: 2em;
+                  align-items: center ;
+                  grid-template-columns: minmax(1em, 1fr) repeat(2, minmax(200px, 400px)) minmax(
+                      1em,
+                      1fr
+                    );
+                }
+             
+                .from-left {
+                  grid-column: 2 / 3;
+                  -webkit-transform: translateX(-50%);
+                  transform: translateX(-50%);
+                }
+
+                .from-right {
+                  grid-column: 3 / 4;
+                  -webkit-transform: translateX(50%);
+                  transform: translateX(50%);
+                }
+
+                .from-left,
+                .from-right {
+                  transition: opacity 250ms ease-in, -webkit-transform 400ms ease-in;
+                  transition: opacity 250ms ease-in, transform 400ms ease-in;
+                  transition: opacity 250ms ease-in, transform 400ms ease-in,
+                    -webkit-transform 400ms ease-in;
+                  opacity: 0;
+                }
+
+                .from-left.appear,
+                .from-right.appear {
+                  -webkit-transform: translateX(0);
+                  transform: translateX(0);
+                  opacity: 1;
+                }
+             .button {
+                  display: inline-block;
+                  border-radius: 3px;
+                  background-color: cadetblue;
+                  border: none;
+                  color: #FFFFFF;
+                  text-align: center;
+                  font-size: 15px;
+                  padding: 18px;
+                  width: 140px;
+                  transition: all 0.5s;
+                  cursor: pointer;
+                  margin: 5px;
+                }
+
+                .button span {
+                  cursor: pointer;
+                  display: inline-block;
+                  position: relative;
+                  transition: 0.5s;
+                }
+
+                .button span:after {
+                  content: '\00bb';
+                  position: absolute;
+                  opacity: 0;
+                  top: 0;
+                  right: -20px;
+                  transition: 0.5s;
+                }
+
+                .button:hover span {
+                  padding-right: 25px;
+                }
+
+                .button:hover span:after {
+                  opacity: 1;
+                  right: 0;
+                }
+        </style>
+    </head>
+     <body>
+    <header>
+      <a href="#" class="site-logo" aria-label="homepage">The Great Scientific Breakthroughts</a>
+      <nav class="main-nav">
+        <ul class="nav__list">
+          <li class="nav__list-item"><a href="#" class="nav__link">Home</a></li>
+          <li class="nav__list-item">
+            <a href="#" class="nav__link">Engineering</a>
+          </li>
+          <li class="nav__list-item">
+            <a href="#" class="nav__link">Medicine</a>
+          </li>
+          <li class="nav__list-item">
+            <a href="#" class="nav__link">Physics</a>
+          </li>
+          <li class="nav__list-item"><a href="#" class="nav__link">Astronomy</a></li>
+            <li class="nav__list-item">
+            <a href="#" class="nav__link">Technology</a>
+          </li>
+            <li class="nav__list-item">
+            <a href="#" class="nav__link">References</a>
+          </li>
+            <li class="nav__list-item">
+            <a href="#" class="nav__link">About Us</a>
+          </li>
+        </ul>
+           <div class="burger ">
+        <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+      </nav>
+    </header>
+     <main>
+         <section class="home-intro">
+            <h1>Discover Medicine!</h1>
+          </section>
+
+          <div class="home-about">
+            <h2>MEDICINE</h2>
+
+            </div>
+             <div class="home-more-stuff">
+        <div class="more-stuff-grid">
+          <img
+            src="photos/Wesley_Anaesthesia_HowSafeAnaesthetist.jpg"
+            alt="Anaesthesia inhaler tube"
+            class="slide-in from-left"
+            width="400"
+          />
+          <p class="slide-in from-right">
+            Anaesthesia
+              <br>
+               Before the introduction of anaesthesia, the practice of surgery used to be restricted. It was a very scary procedure ...
+              <br><br>
+               <a class="button" href="Anaesthesia.html"><span>Learn More </span></a>
+
+          </p>
+        </div>
+        <div class="more-stuff-grid2">
+          <p class="slide-in from-left">
+            Heart Valve Surgery
+              <br>
+               In 1923, at Peter Bent Brigham Hospital the first successful heart valve surgery took place. The surgery was a mitral valve ...
+              <br><br>
+                <a class="button" href="Heartvalve.html"><span>Learn More </span></a>
+
+          </p>
+          <img
+            src="photos/pexels-photo-1250655.jpeg"
+            alt=""
+            class="slide-in from-right"
+            width="400"
+          />
+           
+        </div>
+        <div class="more-stuff-grid">
+          <img
+            src="photos/pexels-photo-6941884.jpeg"
+            alt=""
+            class="slide-in from-left"
+            width="400"
+          />
+          <p class="slide-in from-right">
+           Insulin
+              <br>
+               Diabetes mellitus or commonly known as diabetes, is a metabolic disease that is characterized by high blood glucose levels ... 
+              <br><br>
+               <a class="button" href="Insulin.html"><span>Learn More </span></a>
+
+          </p>
+        </div>
+        <div class="more-stuff-grid2">
+            <p class="slide-in from-left">
+            Magnetic Resonance Imaging
+              <br>
+               Magnetic resonance imaging or MRI, in contrast to Computer Tomography (CT) scan and X-rays, is a non-invasive imaging ...
+              <br><br>
+               <a class="button" href="MRI.html"><span>Learn More </span></a>
+            </p>
+
+          <img
+            src="photos/pexels-mart-production-7089017.jpg"
+            alt=""
+            class="slide-in from-right"
+            width="400"
+          />
+        </div>
+        <div class="more-stuff-grid">
+          <img
+            src="photos/pexels-photo-5726808.jpeg"
+            alt=""
+            class="slide-in from-left"
+            width="400"
+          />
+          <p class="slide-in from-right">
+           Pap Smear
+              <br>
+               A Pap smear, also known as a Pap test, is a common and preventive procedure to test women for cervical cancer. The procedure ...
+              <br><br>
+               <a class="button" href="Papsmear.html"><span>Learn More </span></a>
+
+          </p>
+        </div>
+      <div class="more-stuff-grid2">
+            <p class="slide-in from-left">
+            SmallPox Vaccine
+                <br>
+                Smallpox is an infectious disease which is caused by variola virus. The way of transmission of this virus is by face-to-face ... 
+              
+                
+              <br><br>
+               <a class="button" href="Smallpox.html"><span>Learn More </span></a>
+            </p>
+
+          <img
+            src="photos/pexels-photo-5878521.jpeg"
+            alt=""
+            class="slide-in from-right"
+            width="400"
+          />
+        </div>
+      </div>
+         </main>
+           <script>
+                   /*navigation*/
+        const navSlide = () => {
+            const burger = document.querySelector('.burger');
+            const nav = document.querySelector('.nav__link');
+            const navLinks= document.querySelectorAll('.nav__link li');
+            
+            burger.addEventListener('click',() =>{
+                nav.classList.toggle('nav-active');
+            
+        
+           
+            burger.classList.toggle('toggle');
+        });
+        }
+        navSlide();
+        /*navigation*/
+            const header = document.querySelector("header");
+        const sectionOne = document.querySelector(".home-intro");
+
+        const faders = document.querySelectorAll(".fade-in");
+        const sliders = document.querySelectorAll(".slide-in");
+
+        const sectionOneOptions = {
+          rootMargin: "-200px 0px 0px 0px"
+        };
+
+        const sectionOneObserver = new IntersectionObserver(function(
+          entries,
+          sectionOneObserver
+        ) {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+              header.classList.add("nav-scrolled");
+            } else {
+              header.classList.remove("nav-scrolled");
+            }
+          });
+        },
+        sectionOneOptions);
+
+        sectionOneObserver.observe(sectionOne);
+
+        const appearOptions = {
+          threshold: 0,
+          rootMargin: "0px 0px -250px 0px"
+        };
+
+        const appearOnScroll = new IntersectionObserver(function(
+          entries,
+          appearOnScroll
+        ) {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+              return;
+            } else {
+              entry.target.classList.add("appear");
+              appearOnScroll.unobserve(entry.target);
+            }
+          });
+        },
+        appearOptions);
+
+        faders.forEach(fader => {
+          appearOnScroll.observe(fader);
+        });
+
+        sliders.forEach(slider => {
+          appearOnScroll.observe(slider);
+        });</script>
+    </body>
+    
+    
+    
+</html>

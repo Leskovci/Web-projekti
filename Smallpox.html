@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    
+         <style>
+         body {
+          margin: 0;
+          font-family: "Poppins", sans-serif;
+          overflow-x: hidden;
+        }
+
+        .site-logo {
+          font-weight: 900;
+          font-size: 0.8rem;
+          color: var(--text);
+          text-decoration: none;
+        }
+
+        header {
+          --text: #f4f4f4;
+          --text-inverse: #333;
+          --background: transparent;
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          z-index: 999;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 2em 3em;
+          transition: background 250ms ease-in;
+          background: var(--background);
+          color: var(--text);
+        }
+
+        .nav__list {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          display: flex;
+        }
+
+        .nav__link {
+          --spacing: 1em;
+          text-decoration: none;
+          color: inherit;
+          display: inline-block;
+          padding: calc(var(--spacing) / 2) var(--spacing);
+          position: relative;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          font-size: 0.9rem;
+        }
+
+        .nav__link:after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: var(--spacing);
+          right: var(--spacing);
+          height: 2px;
+          background: currentColor;
+          -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+          transition: -webkit-transform 150ms ease-in-out;
+          transition: transform 150ms ease-in-out;
+          transition: transform 150ms ease-in-out, -webkit-transform 150ms ease-in-out;
+        }
+
+        .nav__link:hover::after {
+          -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+        }
+
+        .nav__link--btn {
+          border: 1.5px solid currentColor;
+          border-radius: 2em;
+          margin-left: 1em;
+          transition: background 250ms ease-in-out;
+          letter-spacing: 1px;
+          padding: 0.75em 1.5em;
+        }
+
+        .nav__link--btn:hover {
+          background: var(--text);
+          color: var(--text-inverse);
+          border-color: var(--text);
+        }
+
+        .nav__link--btn::after {
+          display: none;
+        }
+
+        .nav__link--btn--highlight {
+          background: limegreen;
+          border-color: limegreen;
+          color: #333;
+        }
+
+        .nav__link--btn--highlight:hover {
+          background: var(--text);
+          border-color: var(--text);
+        }
+
+        .nav-scrolled {
+          --text: #333;
+          --text-inverse: #f4f4f4;
+          --background: #f4f4f4;
+          box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
+        }
+         .burger{
+            display:none;
+            cursor:pointer;
+        }
+        .burger div{
+            width:25px;
+            height:3px;
+            background-color: whitesmoke;
+            margin:5px;
+        }
+        .nav__list a:hover{
+                transition: all .5s linear;
+            }
+        @media screen and (max-width:1200px){
+            .nav__list{
+                width:60%;
+            }
+        }
+         @media screen and (max-width:1010px){
+             body{
+                 
+             }
+        
+             .nav__list{
+                 position:absolute;
+                 right:0px;
+                 height:90vh;
+                 top:8vh;
+                 background-color: #061B37;
+                 color: white;
+                 display: flex;
+                 flex-direction: column;
+                 align-content: center;
+                 
+                 width: 50%;
+                 transform:translateX(100%);
+                 transition: transform 0.5s ease-in;
+             }
+             .nav__list li{
+                 opacity:1;
+             }
+             .burger{
+                 display:block;
+                 font-size: 14px;
+                 
+             }
+        }
+        .nav-active{
+            transform: translateX(0%);
+        }
+        @keyframes navLinkFade{
+            from{
+                opacity:0;
+                transform:translateX(50px);
+            }
+            to{
+                opacity:1;
+                transform:translateX(0px);
+            }
+        }
+        .toggle .line1{
+            transform: rotate(-45deg) translate(-5px,6px);
+            
+        }
+        .toggle .line2{
+            opacity:0;
+        }
+        .toggle .line3{
+            transform: rotate(45deg) translate(-5px,-6px);
+        }
+             .home-intro {
+                  padding: 50vh 0;
+                  background:#8ecae6 url(photos/medicine.jpg);
+                  background-size: cover;
+                  background-blend-mode: multiply;
+                  color: white;
+                  text-align: center;
+                font-family: "Poppins", sans-serif;
+                }
+
+
+                .columns {
+                  display: flex;
+                }
+
+                .col + .col {
+                  margin-left: 1.5em;
+                }
+
+                .fade-in {
+                  opacity: 0;
+                  transition: opacity 250ms ease-in;
+                }
+
+                .fade-in.appear {
+                  opacity: 1;
+                }
+                        .more-stuff-grid {
+                  background: #eee;
+                  display: grid;
+                  padding:30px;
+                  grid-gap: 2px;
+                  grid-template-columns: auto;
+                }
+             .more-stuff-grid2 {
+                  display: grid;
+                  padding:30px;
+                  grid-gap: 2px;
+                  grid-template-columns: auto;
+                }
+       
+              .lol {
+                  font-size: 50px;
+                  margin-right:120px;
+                  text-align: right;
+
+                }
+             .row:after {
+                    content: "";
+                    display: table;
+                    clear: both;
+             }
+             .cols {
+                 float: left;
+                 width: 45%;
+                 padding: 30px;
+                }
+             .cols2 {
+                 float: right;
+                 width: 45%;
+                 padding: 30px;
+                }
+             
+             #imS1{
+                 display:block;
+                 margin-left:auto;
+                 margin-right:auto;
+                 border-radius: 5px;
+
+             }
+             #imS2{
+                 display:block;
+                 margin-left:auto;
+                 margin-right:auto;
+                 border-radius: 5px;
+
+             }
+             .smallpoxvac{
+                 padding:30px;
+             }
+             #Smallpox {
+                 padding:30px;
+             }
+             #imS1 {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#imS1:hover {opacity: 0.7;}
+    #imS2 {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#imS2:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position:fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 200px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {  
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)} 
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+  position:fixed;
+  top: 100px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+             #myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color:whitesmoke;
+  color: black;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+}
+
+#myBtn:hover {
+}
+             
+        </style>
+        
+    </head>
+    <body>
+    <header>
+      <a href="#" class="site-logo" aria-label="homepage">The Great Scientific Breakthroughts</a>
+      <nav class="main-nav">
+        <ul class="nav__list">
+          <li class="nav__list-item"><a href="#" class="nav__link">Home</a></li>
+          <li class="nav__list-item">
+            <a href="#" class="nav__link">Engineering</a>
+          </li>
+          <li class="nav__list-item">
+            <a href="#" class="nav__link">Medicine</a>
+          </li>
+          <li class="nav__list-item">
+            <a href="#" class="nav__link">Physics</a>
+          </li>
+          <li class="nav__list-item"><a href="#" class="nav__link">Astronomy</a></li>
+            <li class="nav__list-item">
+            <a href="#" class="nav__link">Technology</a>
+          </li>
+            <li class="nav__list-item">
+            <a href="#" class="nav__link">References</a>
+          </li>
+            <li class="nav__list-item">
+            <a href="#" class="nav__link">About Us</a>
+          </li>
+        </ul>
+           <div class="burger ">
+        <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+      </nav>
+    </header>
+     <main>
+          <section class="home-intro">
+            <h1>Discover the greatest scientific breakthroughts in Medicine!</h1>
+          </section>
+
+         <div class="smallpoxvac">
+            <h2>SMALLPOX VACCINE</h2>
+         </div>
+         <div class="more-stuff-grid">
+        <div id="Smallpox">      
+                <h3>Smallpox</h3>
+        
+            
+                <p>Smallpox is an infectious disease which is caused by variola virus. The way of transmission of this virus is by face-to-face contact. It is one of the deadliest diseases known to humans as it is highly infectious with a survival rate of 3 out of 10 people. For this reason smallpox used to be considered a possible agent of bioterrorism. Its origin is still unknown but the virus has been found in Egyptian mummies and that suggests that the virus has existed for at least 3,000 years. The symptoms of smallpox start with high fever, head and body aches and sometimes vomiting, and a rash and they become more severe by time.
+                
+                </p>
+              </div>   
+        </div>
+          <div id="myModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="img01">
+  <div id="caption"></div>
+</div>
+         <div class="more-stuff-grid2">
+              <div class="row">
+                 <div class="cols">
+           
+                <h3>The History of the Vaccine</h3>
+             
+                <p>As with any other vaccine, smallpox vaccination helps the human body to produce antibodies and develop immunity against the virus. The vaccine is made from a virus called vaccinia and it is a live attenuated vaccine that is administered by a subcutaneous injection. It provides high levels of immunity the first 3-5 years and its efficacy gradually decreases. Smallpox is the only human disease to be eradicated through vaccination.  
+                 <br>
+                 The first attempt to produce the vaccine happened in 1796 by the English doctor Edward Jenner. Smallpox vaccine was the very first successful vaccine to ever be developed. Edward Jenner came up with this idea by observing milkmaids who previously had caught cowpox. After his observations he realized that the milkmaids did not catch smallpox and he decided to start his experiment. First he collected pus from cowpox lesions found on the hand of a milkmaid called Sarah Nelms and then he tried a potentially fatal experiment on an 8 years old boy named James Phipps. After the injection of the vaccine, the child developed symptoms of mild illness but a few days later he had fully recovered. Then Edward Jenner introduced to the child a matter from a smallpox lesion. Fortunately ,his dangerous experiment was successful as the child did not develop any symptoms but also he did not infect any other person who came into contact with. 
+                 <br>
+                 Even though he succeeded, his work was greatly unethical as he put the life of the child at a high risk. Following that he wrote a paper explaining the procedure and the findings but it got rejected and so he added a few more cases in his initial experiment. His paper got published and very fast his discovery spread around Europe and then slowly around the world. Every country had mass vaccination campaigns in order to achieve global eradication of the disease. 
+
+                 </p>
+                 
+              </div>
+                  
+                    <div class="cols2">
+                     <img src="photos/Jenner_phipps_01_(cropped).jpg" alt="drawing of Edward Jenner with James Phipps"  id="imS1" >
+                     </div>
+
+            
+             </div>
+         </div>
+         <div class="more-stuff-grid"> 
+              <div class="row">
+                 <div class="cols">
+           
+            <h3>Different Vaccine Types</h3>
+                <ul>
+                    <li><b>First generation vaccines</b>: used during the eradication program.</li>
+                    <li><b>Second generation vaccines</b>: use the same strains as the first generation ones or clonal virus variants plaque purified from traditional vaccine stocks.</li>
+                    <li><b>Third generation vaccines</b>: have more attenuated vaccine strains specifically developed as safer vaccines at the end of the eradication phase by further passage in cell culture or animals.</li>
+                </ul>
+                <p>Second and third generation vaccines are produced using modern cell culture techniques and current standards of Good Manufacturing Practices.</p>
+                     
+                    </div>
+                    <div class="cols2">
+                        <img src="photos/Smallpox_vaccine-2.jpg" alt="smallpox vaccine" width="600" id="imS2">
+                    </div>
+         </div> 
+             </div>        
+         <button onclick="topFunction()" id="myBtn" title="Go to top">Top
+         </button>
+         <div class="aboutus">
+                    <h1 class="lol"><hr></h1>                
+                </div>
+            <div class="more-stuff-grid2">
+         </div>    
+        </main>
+        <script>
+                   /*navigation*/
+        const navSlide = () => {
+            const burger = document.querySelector('.burger');
+            const nav = document.querySelector('.nav__link');
+            const navLinks= document.querySelectorAll('.nav__link li');
+            
+            burger.addEventListener('click',() =>{
+                nav.classList.toggle('nav-active');
+            
+        
+           
+            burger.classList.toggle('toggle');
+        });
+        }
+        navSlide();
+        /*navigation*/
+            const header = document.querySelector("header");
+        const sectionOne = document.querySelector(".home-intro");
+
+        const faders = document.querySelectorAll(".fade-in");
+        const sliders = document.querySelectorAll(".slide-in");
+
+        const sectionOneOptions = {
+          rootMargin: "-200px 0px 0px 0px"
+        };
+
+        const sectionOneObserver = new IntersectionObserver(function(
+          entries,
+          sectionOneObserver
+        ) {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+              header.classList.add("nav-scrolled");
+            } else {
+              header.classList.remove("nav-scrolled");
+            }
+          });
+        },
+        sectionOneOptions);
+
+        sectionOneObserver.observe(sectionOne);
+
+        const appearOptions = {
+          threshold: 0,
+          rootMargin: "0px 0px -250px 0px"
+        };
+
+        const appearOnScroll = new IntersectionObserver(function(
+          entries,
+          appearOnScroll
+        ) {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+              return;
+            } else {
+              entry.target.classList.add("appear");
+              appearOnScroll.unobserve(entry.target);
+            }
+          });
+        },
+        appearOptions);
+
+        faders.forEach(fader => {
+          appearOnScroll.observe(fader);
+        });
+
+        sliders.forEach(slider => {
+          appearOnScroll.observe(slider);
+        });
+            
+            
+            var modal = document.getElementById("myModal");
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img = document.getElementById("imS1");
+var img2 = document.getElementById("imS2");
+var modalImg = document.getElementById("img01");
+var captionText = document.getElementById("caption");
+img.onclick = function(){
+  modal.style.display = "block";
+  modalImg.src = this.src;
+  captionText.innerHTML = this.alt;
+}
+img2.onclick = function(){
+  modal.style.display = "block";
+  modalImg.src = this.src;
+  captionText.innerHTML = this.alt;
+}
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() { 
+  modal.style.display = "none";
+}
+  
+        //Get the button
+var mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+        </script>
+        
+    </body>
+</html>

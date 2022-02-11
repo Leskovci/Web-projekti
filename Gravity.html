@@ -1,0 +1,884 @@
+ <!DOCTYPE html>
+
+
+<html>
+<head>
+    
+    <title>Gravity</title>
+    
+    
+    
+    <style>
+        
+        
+        
+    /*navigation*/
+             
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    overflow-x: hidden;
+}
+
+.site-logo {
+    font-weight: 900;
+    font-size: 0.8rem;
+    color: var(--text);
+    text-decoration: none;
+}
+
+header {
+    --text: #f4f4f4;
+    --text-inverse: #333;
+    --background: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2em 3em;
+    transition: background 250ms ease-in;
+    background: var(--background);
+    color: var(--text);
+}
+
+.nav__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav__link {
+    --spacing: 1em;
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+    padding: calc(var(--spacing) / 2) var(--spacing);
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+}
+
+.nav__link:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: var(--spacing);
+    right: var(--spacing);
+    height: 2px;
+    background: currentColor;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    transition: -webkit-transform 150ms ease-in-out;
+    transition: transform 150ms ease-in-out;
+    transition: transform 150ms ease-in-out, -webkit-transform 150ms ease-in-out;
+}
+
+.nav__link:hover::after {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+}
+
+.nav__link--btn {
+    border: 1.5px solid currentColor;
+    border-radius: 2em;
+    margin-left: 1em;
+    transition: background 250ms ease-in-out;
+    letter-spacing: 1px;
+    padding: 0.75em 1.5em;
+}
+
+.nav__link--btn:hover {
+    background: var(--text);
+    color: var(--text-inverse);
+    border-color: var(--text);            
+}
+
+ .nav__link--btn::after {
+    display:none;
+}
+
+.nav__link--btn--highlight:hover {
+    background: var(--text);
+    border-color: var(--text);
+}
+
+.nav-scrolled {
+    --text: #333;           
+    --text-inverse: #f4f4f4;
+    --background: #f4f4f4;
+    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
+}
+            
+.burger{
+    display:none;
+    cursor:pointer;
+}
+        
+.burger div{
+    width:25px;
+    height:3px;
+    background-color: black;
+    margin:5px;         
+}
+            
+.nav__list a:hover{
+    transition: all .5s linear;
+}
+        
+        
+        
+@media screen and (max-width:1200px){
+        .nav__list{
+            width:60%;
+        }
+    }
+        
+        
+        
+@media screen and (max-width:1010px){
+        body{
+                 
+        }
+        
+        .nav__list{
+            position:absolute;
+            right:0px;
+            height:90vh;
+            top:8vh;
+            background-color: #061B37;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            text-align: center;              
+            width: 50%;
+            transform:translateX(100%);
+            transition: transform 0.5s ease-in;
+        }
+    
+        .nav__list a {
+            text-decoration: none;
+            letter-spacing: 3px;
+            border-spacing: 20px;
+            padding-top: 40px;
+            font-weight: bold;
+            font-size:14px;
+        }
+    
+        .nav__list li {
+            opacity:1;
+        }
+    
+        .burger {
+            display:block;
+            font-size: 14px;       
+        }
+}
+        
+        
+        
+        
+        
+    /*burger side bar*/
+.nav-active{
+    transform: translateX(0%);
+}
+        
+@keyframes navLinkFade {
+    
+    from{
+        opacity:0;
+        transform:translateX(50px);
+    }
+    
+    to{
+        opacity:1;
+        transform:translateX(0px);
+    }
+}
+        
+        
+        
+        
+        
+        
+    /*burger becomes x */
+.toggle .line1{
+    transform: rotate(-45deg) translate(-5px,6px);
+            
+}
+        
+.toggle .line2{
+    opacity:0;
+}
+        
+.toggle .line3{
+    transform: rotate(45deg) translate(-5px,-6px);
+}
+                         
+        /*navigation end*/ 
+       
+        
+        
+        
+  
+        
+        
+/* big image*/
+header {
+  --text: #f4f4f4;
+  --text-inverse: #333;
+  --background: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2em 3em;
+  transition: background 250ms ease-in;
+  background: var(--background);
+  color: var(--text);
+}
+
+
+.home-intro {
+  padding: 30vh 0;
+  background: #123;
+  background-size: cover;
+  background-blend-mode: multiply;
+  color: white;
+  text-align: center;
+}
+
+.home-about {
+  padding: 4em 0;
+  max-width: 1520px;
+  margin: 0 auto;
+    background-color: ;  
+}
+  /*big image end*/   
+        
+        
+        
+    
+        
+        
+        
+        /* Title*/
+.columns {
+    display: flex;
+    position: relative;
+    left:40%;
+    font-size:4em;
+    color: ;   
+    font-family: "copperplate", serif;  
+}
+         
+.col + .col {
+  margin-left: 1.5em;   
+}
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 250ms ease-in;    
+}
+        
+.fade-in.appear {
+  opacity: 1;
+}
+/* Title end*/
+        
+        
+  
+        
+        
+        /* main content*/
+.more-stuff-grid {
+    background: #f4f4f4;
+    border-bottom:  5px black;
+    border-bottom-style: groove;
+    padding: 4em 0;
+    display: grid;
+    grid-gap: 2em;
+    align-items: center;
+    background-color: ;
+    grid-template-columns: minmax(1em, 1fr) repeat(2, minmax(200px, 400px)) minmax(
+      1em,
+      1fr
+    );
+}
+        .more-stuff-grid p {
+            position: relative;
+            width:680px;
+            left:500px;
+        }
+        
+        .more-stuff-grid img {
+            position:relative;
+            z-index:+1;
+            left:95%;
+            width:400px;
+            height:400px;
+        }
+        
+    .more-stuff-grid img:hover {       
+            position: relative;
+            z-index:+1;
+            transform:  rotatez(-360deg) translatex(-300px);
+            transition: all 2s;                    
+        } 
+          
+.title {
+    position:relative;
+    font-size: 2em;
+    left:200px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid grey;
+}
+        
+#right {
+    position:relative;
+    left:130%;            
+}
+        
+#text1 {
+    position:relative;
+    left:0px;
+}
+        
+#text2 {
+    position: relative;
+    align-items: center;
+    left:30%;
+}
+        
+        
+        
+    
+        
+        
+    /* under the images text*/
+.name1{
+    position: relative;          
+    height:360px;
+    width:68%;
+    left:40px;
+    font-size: 2em;             
+    padding:20px;
+    background-color: #B1D8DD;
+}
+        
+.name2{
+    position: relative;          
+    height:360px;
+    width:67%;          
+    left:43%;      
+    font-size: 2em;    
+    padding:20px;
+    background-color: #B1D8DD;
+}
+        
+        /* Under the images text end*/
+        
+        
+        
+        
+        
+        
+        
+        /*menu button*/
+.dropbtn {
+    background-color: #3498DB;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    position:fixed;
+    z-index: +2;
+    top:100px;
+    left:10px;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: fixed;
+    display: inline-block;
+    top:150px;
+    left:5px;    
+    z-index: +2;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {
+    display:block;
+}
+   /*menu button end*/
+        
+        
+        
+        
+        
+        
+        /* when screen gets minimized*/
+  @media screen and (max-width:1200px){
+            
+        
+             .more-stuff-grid{
+                position:relative;
+                display: flex;
+                flex-direction: column;
+                align-content: center;
+                text-align: center;
+                left:0px;
+                width: 100%;    
+             } 
+      
+                 .more-stuff-grid img{
+                     display:block;
+                     position:relative;
+                     left:0px;
+                 }
+            .title{
+                left:0px;
+            }
+            #text1{  
+                display: flex;
+                flex-direction: column;
+                align-content: center;
+                text-align: center;
+                left:0px;
+            }
+      
+            #text2{
+                display: flex;
+                flex-direction: column;
+                align-content: center;
+                text-align: center;
+                left:0px; 
+            }
+      
+            #right{
+                display: flex;
+                flex-direction: column;
+                align-content: center;
+                text-align: center;
+                left:0px;
+            }
+      
+            .name1{
+                position:absolute;
+                width:30%;
+                left:35%;
+            }
+            .name2{
+                position:absolute;
+                top:343px;
+                width:200px;
+                left:35%;
+            }
+      
+            #name2{
+                position:absolute;
+                top:360px;
+            }
+            #name3{
+                top:65px;
+                left:35%;
+            }
+    }
+           /*end*/
+        
+        
+    </style>
+    
+    
+    </head>
+    
+    
+    
+    <body>
+    
+        
+        <header>
+            
+            
+      <a href="#" class="site-logo" aria-label="homepage">The Great Scientific Breakthroughts</a>
+            
+            
+            <!--navigation-->
+      <nav class="main-nav">
+          
+          
+        <ul class="nav__list">
+            
+            
+            <li class="nav__list-item"> <a href="#" class="nav__link">Home</a> </li>
+            
+            
+            <li class="nav__list-item"> <a href="#" class="nav__link">Engineering</a> </li>
+            
+            
+            <li class="nav__list-item"> <a href="#" class="nav__link">Medicine</a> </li>
+            
+            
+            <li class="nav__list-item"> <a href="Physics.html" class="nav__link">Physics</a> </li>
+            
+            
+            <li class="nav__list-item"> <a href="#" class="nav__link">Astronomy</a> </li>
+            
+            
+            <li class="nav__list-item"> <a href="#" class="nav__link">Technology</a> </li>
+            
+            
+            <li class="nav__list-item"> <a href="#" class="nav__link">References</a> </li>
+            
+            
+            <li class="nav__list-item"> <a href="#" class="nav__link">About Us</a> </li>
+            
+            
+        </ul>
+          
+          
+          
+          
+          
+          
+          <!--the burger that appears when screen is minimized-->
+           <div class="burger ">
+               
+        <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+               
+        </div>
+          
+          
+          
+      </nav>
+          </header>
+
+        
+        
+    <main>
+        
+        
+      <section class="home-intro">
+          
+        <img src="photos/physics.png" alt="an image of an atom" width="400" height="400">
+          
+      </section>
+        
+   
+        <!--the menu button-->
+<div class="dropdown">
+    
+  <button onclick="myFunction()" class="dropbtn">Menu</button>
+    
+  <div id="myDropdown" class="dropdown-content">
+    <a href="#t1">Intro</a>
+      <a href="#t2">Early concepts</a>
+      <a href="#t3">Newton’s law of gravity</a>
+      <a href="#t4">Weight and mass</a>
+        
+  </div>
+</div>
+        
+        
+        
+      <div class="home-about">
+        
+       
+        <div class="columns">
+            
+          <div class="col fade-in">
+            <h3 id="t1">Gravity</h3>
+            
+          </div>
+         
+          </div>
+        </div>
+ 
+        
+        
+
+      <div class="home-more-stuff">
+          
+          <!--first section-->
+        <div class="more-stuff-grid">
+            
+          <img
+            src="photos/wormhole-g1ce86d442_1280.png"
+            alt="a display of gravitational force"
+            class="slide-in from-left"
+          />
+            <text class="name1 slide-in from-left"><strong>A brief explanation</strong><br><br><em>A display of the gravitational force way of working</em></text>
+            
+          <p id="text1">
+              
+             <span class="title">Intro</span> <br><br>
+              
+            The force of pull that acts between all matter is called gravity. It does not have a part in defining the properties of everyday matter since it is the weakest force. Even though it has an universal action controlling trajectories of planets and enabling objects to stay attached to ground. Every object on earth has a weight and the gravity force is proportional to their weight. In fact gravity is measured by the speed that it gives to falling objects. The gravity on earth is 9.81 meters per second. Therefore, after each second of falling the gravity will increase for 9.81. Compared to that in the moon the gravitational force is 1.6 meters per second. 
+              Two theories that stand out are the ones said by Isac Newton and Albert Einstein. Their theories have implications in continuous researches and have led to great developments.<span id="t2"></span>
+                <br><br>
+             
+          </p>
+        </div>
+          
+          
+          
+          
+          
+          <!--second section-->
+        <div class="more-stuff-grid">
+             
+          <p id="text2">
+              
+           <span class="title">Early concepts</span> <br><br>
+              
+              Aristotle argued that every celestial body had their own natural flow it was not affected by an outside force; in the other hand, Newton argued that gravity was the force which was moving all the celestial bodies.  Aristotle’s idea and the ideas that objects needed to have continuous force acting and that it had to be done by contact and not from a distance roamed for quite some time. After some time Johannes Kepler supported Nicolaus Copernicus idea that the planets orbited around the sun and not around the earth. Kepler using geometric and arithmetic equations explained the planetary orbit, and made three quantitative laws. 
+
+              <br><br>
+             
+          </p>
+            
+        <img id="right"
+            src="photos/wormhole-g8b6ec3637_1920.jpg"
+            alt="wormhole "
+            class="slide-in from-right" 
+          />
+            <text id="name2" class="name2 slide-in from-left"><strong>A brief explanation</strong><br><br><em>A wormhole</em></text>
+            
+        </div>
+          
+          
+          
+          
+          
+          <!--third section-->
+        <div class="more-stuff-grid">
+            
+          <img
+            src="photos/newtons-cradle-gf8677aab4_1920.jpg"
+            alt="a photo of newtons cradle"
+            class="slide-in from-left"
+          />
+            <text class="name1 slide-in from-left"> <strong>A brief explanation</strong><br><br><em>Newtons cradle - used to show how gravity works</em></text>
+            
+          <p id="text1">
+              
+            1)” The planets describe elliptic orbits, of which the Sun occupies one focus (a focus is one of two points inside an ellipse; any ray coming from one of them bounces off a side of the ellipse and goes through the other focus)”
+              2)” The line joining a planet to the Sun sweeps out equal areas in equal times.”
+              3)” The square of the period of revolution of a planet is proportional to the cube of its average distance from the Sun.”<span id="t3"></span>
+
+                <br><br><br>
+              
+          </p>
+        </div>
+          
+          
+          
+          
+          <!--fourth section-->
+          
+        <div class="more-stuff-grid">
+            
+          <p id="text2">
+            <span class="title">Newton’s law of gravity </span> <br><br>
+              
+              Newton said that there exists a force that does not require contact implies to all matter. He said that in order for the moon to move around the earth rather than in a straight line the force had to come from the earth, he then calculated the acceleration of the moon, the circular orbital motion and came up with the formula: 4π2<span id="t4"></span>
+                <br><br><br>
+              
+          </p>
+            
+          <img id="right"
+            src="photos/planets-g97d5caa1d_1920.jpg"
+            alt="a photo of all the planets "
+            class="slide-in from-right"
+          />
+            <text class="name2 slide-in from-left"><strong>A brief explanation</strong><br><br><em>This photo explains how gravity works on all the solar systems photo</em></text>
+        </div>
+          
+          
+          
+          
+          
+          
+          
+          <!--fifth section-->
+        <div class="more-stuff-grid">
+            
+          <img 
+            src="photos/nasa-Yj1M5riCKk4-unsplash.jpg"
+            alt="an astronaut in outer space"
+            class="slide-in from-left"
+          />
+            <text id="name3" class="name1 slide-in from-left"><strong>A brief explanation</strong><br><br><em>Since in space the gravitational pull is less that the astronaut can float </em></text>
+            
+          <p id="text1">
+              
+             <span class="title">Weight and mass</span> <br><br>
+              
+              In order to, find the weight of a body we need to measure the equal and contrary force necessary to stop the speed of the free fall. Due to differences in radius and mass, the body in the moon will weight about 1/6-th of the its weight in earth.
+                <br><br>
+             
+          </p>
+        </div>
+       
+          
+        </div>
+    </main>
+        
+        
+       
+    <script>
+        
+         
+               /*navigation*/
+        const navSlide = () => {
+            const burger = document.querySelector('.burger');
+            const nav = document.querySelector('.nav__list');
+            const navLinks= document.querySelectorAll('.nav__list li');
+            
+            burger.addEventListener('click',() =>{
+                nav.classList.toggle('nav-active');
+            
+        
+           
+            burger.classList.toggle('toggle');
+        });
+        }
+        navSlide();
+        /*navigation*/
+    
+        
+        
+        
+        
+        
+        //menu button//
+         function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+       
+// Close the dropdown menu if the user clicks outside of it//
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+        
+      //slide in and fade in feature//
+        const header = document.querySelector("header");
+const sectionOne = document.querySelector(".home-intro");
+
+const faders = document.querySelectorAll(".fade-in");
+const sliders = document.querySelectorAll(".slide-in");
+
+const sectionOneOptions = {
+  rootMargin: "-200px 0px 0px 0px"
+};
+
+     
+        
+        
+        
+        
+        
+        //appear on scroll//
+const sectionOneObserver = new IntersectionObserver(function(
+  entries,
+  sectionOneObserver
+) {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) {
+      header.classList.add("nav-scrolled");
+    } else {
+      header.classList.remove("nav-scrolled");
+    }
+  });
+},
+sectionOneOptions);
+
+sectionOneObserver.observe(sectionOne);
+
+const appearOptions = {
+  threshold: 0,
+  rootMargin: "0px 0px -250px 0px"
+};
+
+const appearOnScroll = new IntersectionObserver(function(
+  entries,
+  appearOnScroll
+) {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) {
+      return;
+    } else {
+      entry.target.classList.add("appear");
+      appearOnScroll.unobserve(entry.target);
+    }
+  });
+},
+appearOptions);
+
+faders.forEach(fader => {
+  appearOnScroll.observe(fader);
+});
+
+sliders.forEach(slider => {
+  appearOnScroll.observe(slider);
+});</script>
+  </body>
+</html>

@@ -1,0 +1,816 @@
+ <!DOCTYPE html>
+
+
+<html>
+    
+<head>
+    <title>Physics</title>
+    
+    <style>
+        
+        
+    /*navigation*/
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    overflow-x: hidden;
+}
+
+.site-logo {
+    font-weight: 900;
+    font-size: 0.8rem;
+    color: var(--text);
+    text-decoration: none;
+}
+
+header {
+    --text: #f4f4f4;
+     --text-inverse: #333;
+    --background: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2em 3em;
+    transition: background 250ms ease-in;
+    background: var(--background);
+    color: var(--text);
+}
+
+.nav__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav__link {
+    --spacing: 1em;
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+    padding: calc(var(--spacing) / 2) var(--spacing);
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+}
+
+.nav__link:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: var(--spacing);
+    right: var(--spacing);
+    height: 2px;
+    background: currentColor;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    transition: -webkit-transform 150ms ease-in-out;
+    transition: transform 150ms ease-in-out;
+    transition: transform 150ms ease-in-out, -webkit-transform 150ms ease-in-out;
+}
+
+.nav__link:hover::after {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+}
+
+.nav__link--btn {
+    border: 1.5px solid currentColor;
+    border-radius: 2em;
+    margin-left: 1em;
+    transition: background 250ms ease-in-out;
+    letter-spacing: 1px;
+    padding: 0.75em 1.5em;
+}
+
+.nav__link--btn:hover {
+    background: var(--text);
+    color: var(--text-inverse);
+    border-color: var(--text);
+            
+}
+
+.nav__link--btn::after {
+    display:none;
+}
+
+.nav__link--btn--highlight:hover {
+    background: var(--text);
+    border-color: var(--text);
+}
+
+.nav-scrolled {
+    --text: #333;    
+    --text-inverse: #f4f4f4;
+    --background: #f4f4f4;
+    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
+}
+            
+.burger {
+    display:none;
+    cursor:pointer;
+}
+        
+.burger div {
+    width:25px;
+    height:3px;
+    background-color: black;
+        margin:5px;    
+}
+            
+.nav__list a:hover {
+        transition: all .5s linear;
+}
+        
+        
+
+        
+        
+        
+        
+        
+    /*when screen gets minimized*/
+@media screen and (max-width:1200px) {
+            
+    .nav__list {
+         width:60%;
+    }
+            
+}
+        
+        
+        
+@media screen and (max-width:1010px) {
+             
+    body {
+                 
+    }
+        
+    .nav__list {
+        position:absolute;
+        right:0px;
+        height:90vh;
+        top:8vh;
+        background-color: #061B37;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        text-align: center;
+        width: 50%;
+        transform:translateX(100%);
+        transition: transform 0.5s ease-in;
+    }
+             
+    .nav__list a {
+        text-decoration: none;
+        letter-spacing: 3px;
+        border-spacing: 20px;
+        padding-top: 40px;
+        font-weight: bold;
+        font-size:14px;
+    }
+             
+    .nav__list li {
+        opacity:1;
+    }
+             
+    .burger {
+        display:block;
+        font-size: 14px;
+    }
+             
+}
+        
+        
+       
+        
+        
+        
+        
+        /*burger side bar*/
+.nav-active {
+    transform: translateX(0%);
+}
+        
+@keyframes navLinkFade {
+            
+    from {
+        opacity:0;
+        transform:translateX(50px);
+    }
+            
+    to {
+        opacity:1;
+        transform:translateX(0px);
+    }
+            
+}
+       
+        
+        
+        
+        
+        
+    /*burger becomes x */
+.toggle .line1{ 
+    transform: rotate(-45deg) translate(-5px,6px); 
+}
+        
+.toggle .line2 {
+    opacity:0;
+}
+        
+.toggle .line3 {
+    transform: rotate(45deg) translate(-5px,-6px);
+}
+        
+        /*navigation end*/
+        
+        
+            
+       
+
+
+/*big image*/
+header {
+  --text: #f4f4f4;
+  --text-inverse: #333;
+  --background: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2em 3em;
+  transition: background 250ms ease-in;
+  background: var(--background);
+  color: var(--text);
+}
+
+
+.home-intro {
+  padding: 50vh 0;
+  background: url(photos/pexels-ron-lach-10186702.jpg);
+  background-size: cover;
+  background-blend-mode: multiply;
+  color: white;
+  text-align: center;
+  opacity: 90%;
+}
+
+.home-about {
+  padding: 4em 0;
+  max-width: 900px;
+  margin: 0 auto;
+    
+}
+        
+        
+        
+        
+        
+        
+  /*Title*/      
+.columns {
+    display: flex;
+    position: relative;
+    left:35%;
+    font-size:4em;
+    font-family: "copperplate", serif;
+    
+}
+        
+.col + .col {
+  margin-left: 1.5em;
+    
+}
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 250ms ease-in;
+    
+}
+        
+
+.fade-in.appear {
+  opacity: 1;
+}
+
+   
+        
+        
+        
+        
+        /*Main content*/
+.more-stuff-grid {
+  background: #f4f4f4; 
+  padding: 4em 0;
+  display: grid;
+  grid-gap: 2em;
+  align-items: center;
+  grid-template-columns: minmax(1em, 1fr) repeat(2, minmax(200px, 400px)) minmax(
+      1em,
+      1fr
+    );
+}
+      
+        .more-stuff-grid img {
+            width:400px;
+            height:350px;
+        }
+        
+.title1 {
+    position:relative;
+    font-size: 2em;
+    left:50px;
+     padding-bottom: 10px;
+     border-bottom: 3px solid grey;
+ }
+        
+#title2 {
+    position:relative;
+    font-size: 2em;
+    left:10px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid grey;
+}
+        
+        
+        
+        
+        
+        
+        
+        /*slide in*/
+.from-left {
+  grid-column: 2 / 3;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.from-right {
+  grid-column: 3 / 4;
+  -webkit-transform: translateX(50%);
+  transform: translateX(50%);
+}
+
+.from-left,
+.from-right {
+  transition: opacity 250ms ease-in, -webkit-transform 400ms ease-in;
+  transition: opacity 250ms ease-in, transform 400ms ease-in;
+  transition: opacity 250ms ease-in, transform 400ms ease-in,
+    -webkit-transform 400ms ease-in;
+  opacity: 0;
+}
+
+.from-left.appear,
+.from-right.appear {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+  opacity: 1;
+}
+        
+ .button {
+    display: inline-block;
+    border-radius: 3px;
+    background-color: cadetblue;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 15px;
+    padding: 18px;
+    width: 140px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.button:hover span {
+    padding-right: 25px;
+}
+
+.button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+       
+        
+        
+        
+        
+        
+        
+ /* when screen is minimized*/
+@media screen and (max-width:1200px) {
+            
+        
+    .more-stuff-grid {
+        position:relative;                                      
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        text-align: center;
+        left:0px;
+        width: 100%;  
+    } 
+                
+        .more-stuff-grid img {
+            display:block;
+            position:relative;
+            left:0px;
+        }
+    
+    .title1{
+        left:0px;
+    }
+    
+    .title2 {
+        left:0px;
+    }
+               
+    .button {
+        left:0px;
+    }
+    
+    #text1 {            
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        text-align: center;
+        left:0px;
+    }
+    
+    #text2 {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        text-align: center;
+        left:0px; 
+    }
+    
+    #right {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        text-align: center;
+        left:0px;
+    }
+    
+} 
+        
+    </style>
+    
+    
+    </head>
+    
+    
+    
+    
+    <body>
+        
+        
+   <header>
+       
+       
+      <a href="#" class="site-logo" aria-label="homepage">The Great Scientific Breakthroughts</a>
+       
+       
+       <!--navigation-->
+      <nav class="main-nav">
+          
+          
+        <ul class="nav__list">
+            
+            
+            <li class="nav__list-item"><a href="MainPage.html" class="nav__link">Home</a></li>
+            
+            
+            <li class="nav__list-item"><a href="#" class="nav__link">Engineering</a></li>
+            
+            
+            <li class="nav__list-item"><a href="#" class="nav__link">Medicine</a></li>
+            
+            
+            <li class="nav__list-item"><a href="Physics.html" class="nav__link">Physics</a></li>
+            
+            
+            <li class="nav__list-item"><a href="#" class="nav__link">Astronomy</a></li>
+            
+            
+            <li class="nav__list-item"><a href="#" class="nav__link">Technology</a></li>
+            
+            
+            <li class="nav__list-item"><a href="#" class="nav__link">References</a></li>
+            
+            
+            <li class="nav__list-item"> <a href="#" class="nav__link">About Us</a> </li>
+            
+            
+        </ul>
+          
+          
+          <!--the burger that appears when screen is minimized-->
+           <div class="burger ">
+               
+        <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+               
+        </div>
+          
+      </nav>
+    </header>
+
+        
+        
+    <main>
+        
+      <section class="home-intro">
+          
+       
+          
+      </section>
+        
+        
+
+      <div class="home-about">
+        
+       
+        <div class="columns">
+          <div class="col fade-in">
+            <h3>PHYSICS</h3>
+            
+          </div>
+         
+          </div>
+        </div>
+      
+
+      <div class="home-more-stuff">
+          
+          
+          
+          <!--first section-->
+        <div class="more-stuff-grid">
+            
+          <img
+            src="photos/generator-gd1abf5aac_1920.png"
+            alt="an advannced generator"
+            class="slide-in from-left"
+          /> 
+            
+          <p class="slide-in from-right">
+              
+              <span class="title1">Electric generator</span><br><br>
+              
+            Any kind of machine that converts mechanical energy to electricity is called an electric generator or dynamo.  Generators supply power lines and produce the electricity for automobiles, aircraft, ships...<br><br>
+              <button class="button" onclick="window.location.href='ElectricGenerator.html' ;" ><span>Learn More </span></button>
+          </p>
+        </div>
+          
+          
+        
+          
+          <!--second section-->
+        <div class="more-stuff-grid">
+             
+          <p class="slide-in from-left">
+              
+             <span class="title1">Electricity</span><br><br>
+              
+                Electricity is everywhere, it is the power supply for computers, phones, lights. Electricity can occur in nature as well, lightning in thunderstorm, synapses in various organizems . There is not an exact answer to what is electricity, there are only descriptions of electricitys interaction with the surroundings.
+              Electricity is an occurrence that takes many forms and appears in nature. From here the focus will be on current electricity. Explaining the route of electricity from power source to different devices that use electricity...
+              <br><br>
+              <button class="button" onclick="window.location.href='Electricity.html' ;" ><span>Learn More </span></button>
+          </p>
+            
+            
+          <img
+            src="photos/light-bulb-g8516a1222_1920.jpg"
+            alt=" a photo of light bulb"
+            class="slide-in from-right"
+          />
+        </div>
+          
+          
+          
+          
+          
+          <!--third section-->
+        <div class="more-stuff-grid">
+          <img
+            src="photos/wormhole-g1ce86d442_1280.png"
+            alt="a demonstaration of gravity"
+            class="slide-in from-left"
+          />
+            
+            
+          <p class="slide-in from-right">
+              
+              
+              <span class="title1">Gravity</span><br><br>
+            The force of pull that acts between all matter is called gravity. It does not have a part in defining the properties of everyday matter since it is the weakest force. Even though it has an universal action controlling trajectories of planets and enabling objects to stay attached to ground. Every object on earth has a weight and the gravity force is proportional to their weight. In fact gravity is measured by the speed that it gives to falling objects. The gravity on earth is 9.81 meters per second. Therefore, after each second of falling the gravity will increase for 9.81. Compared to that in the moon the gravitational force is 1.6 meters per second... <br><br><br>
+              <button class="button" onclick="window.location.href='Gravity.html' ;" ><span>Learn More </span></button>
+          </p>
+        </div>
+          
+          
+          
+          
+          
+          
+          <!--fourth section-->
+        <div class="more-stuff-grid">
+            
+          <p class="slide-in from-left">
+              
+              <span class="title1">Nuclear reactor</span><br><br>
+              Nuclear reactor the power supply for nuclear power plants, system to produce radioactive isotopes. A device capable of controlling and initiating nuclear fissions.
+              The process when a heavy atomic nucleus is separated into two smaller components. When this happens  the smaller components release neutrons which release more neutrons, which cause more fissions. So, a chain reaction has been created and this releases a large amount of energy...
+<br><br><br>
+              <button class="button" onclick="window.location.href='NuclearReactor.html' ;" ><span>Learn More </span></button>
+              
+          </p>
+            
+          <img
+            src="photos/lukas-lehotsky-ixcHGhae2mg-unsplash.jpg"
+            alt=" nuclear reactor photo"
+            class="slide-in from-right"
+          />
+        </div>
+          
+          
+          
+          
+          <!--fifth section-->
+        <div class="more-stuff-grid">
+            
+            
+          <img
+            src="photos/pexels-anna-shvets-4225877.jpg"
+            alt="a photo of body x-ray "
+            class="slide-in from-left"
+          />
+            
+            
+          <p class="slide-in from-right">
+              <span class="title1">X-ray</span><br><br>
+            X-rays are a form of electromagnetic radiation, similar to visible light. Unlike light, however, x-rays have higher energy and can pass through most objects, including the body. Medical x-rays are used to generate images of tissues and structures inside the body.<br><br> 
+            
+           
+        
+            How to do they work<br><br>
+            Listed below are examples of examinations and procedures that use x-ray technology to either diagnose or treat disease:...<br><br>
+              <button class="button" onclick="window.location.href='X-Ray.html' ;" ><span>Learn More </span></button>
+        </p>
+        </div>
+          
+          
+          
+          
+          <!--sixth section-->
+        <div class="more-stuff-grid">
+            
+            
+            
+          <p class="slide-in from-left">
+              
+              <span id="title2">Electromagnetic induction</span><br><br>
+              
+          A magnetizing force and magnetic field are established when current passes through a straight conductor. 
+              North and South pole are established when the wire is attached into a coil, and the magnetic field is increased which produces a static magnetic field.
+              The magnetic flux is proportional to the amount current flowing.  In order to, strengthen the static magnetic field an extra layer of wires is added. The more wires there are within a coil the stronger the magnetic field gets... 
+                <br><br>
+              <button class="button" onclick="window.location.href='ElectroMagneticInduction.html' ;" ><span>Learn More </span></button>
+          </p>
+            
+            
+          <img
+            src="photos/mika-baumeister-8-ddOX6LSrM-unsplash.jpg"
+            alt=" a small electromagnetic device"
+            class="slide-in from-right"
+          />
+        </div>
+          
+          
+          
+        </div>
+    </main>
+        
+        
+        
+    <script>
+        
+         
+        /*navigation*/
+         const navSlide = () => {
+            const burger = document.querySelector('.burger');
+            const nav = document.querySelector('.nav__list');
+            const navLinks= document.querySelectorAll('.nav__list li');
+            
+            burger.addEventListener('click',() =>{
+                nav.classList.toggle('nav-active');
+            
+        
+           
+            burger.classList.toggle('toggle');
+        });
+        }
+        navSlide();
+        /*navigation*/
+        
+      
+        
+        
+        
+        
+        
+        //fade in and slide in feature//
+        
+        const header = document.querySelector("header");
+const sectionOne = document.querySelector(".home-intro");
+
+const faders = document.querySelectorAll(".fade-in");
+const sliders = document.querySelectorAll(".slide-in");
+
+const sectionOneOptions = {
+  rootMargin: "-200px 0px 0px 0px"
+};
+        
+        
+        
+        
+        
+        
+//appear on scroll//
+const sectionOneObserver = new IntersectionObserver(function(
+  entries,
+  sectionOneObserver
+) {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) {
+      header.classList.add("nav-scrolled");
+    } else {
+      header.classList.remove("nav-scrolled");
+    }
+  });
+},
+sectionOneOptions);
+
+sectionOneObserver.observe(sectionOne);
+
+const appearOptions = {
+  threshold: 0,
+  rootMargin: "0px 0px -250px 0px"
+};
+
+const appearOnScroll = new IntersectionObserver(function(
+  entries,
+  appearOnScroll
+) {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) {
+      return;
+    } else {
+      entry.target.classList.add("appear");
+      appearOnScroll.unobserve(entry.target);
+    }
+  });
+},
+appearOptions);
+
+faders.forEach(fader => {
+  appearOnScroll.observe(fader);
+});
+
+sliders.forEach(slider => {
+  appearOnScroll.observe(slider);
+});</script>
+  </body>
+</html>
